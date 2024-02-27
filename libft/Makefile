@@ -68,6 +68,7 @@ SRC_NAME = \
 	str/ft_striteri.c str/ft_strmapi.c \
 	lst/ft_lstsize.c lst/ft_lstlast.c lst/ft_lstnew.c lst/ft_lstadd_front.c lst/ft_lstadd_back.c lst/ft_lstiter.c \
 	lst/ft_lstdelone.c lst/ft_lstclear.c lst/ft_lstmap.c \
+	gnl/get_next_line.c gnl/get_next_line_utils.c \
 
 SRC =				$(addprefix $(SRC_PATH), $(SRC_NAME))
 # SRC =				$(wildcard $(SRC_PATH)*.c) $(wildcard $(SRC_PATH)**/*.c)
