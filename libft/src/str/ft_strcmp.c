@@ -6,11 +6,11 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 10:37:49 by msloot            #+#    #+#             */
-/*   Updated: 2024/02/28 19:22:12 by msloot           ###   ########.fr       */
+/*   Updated: 2024/02/29 15:51:18 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
 int	ft_strcmp(const char *s1, const char *s2)
 {

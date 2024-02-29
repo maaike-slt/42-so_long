@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 14:56:09 by msloot            #+#    #+#             */
-/*   Updated: 2024/02/27 23:01:54 by msloot           ###   ########.fr       */
+/*   Updated: 2024/02/29 15:52:57 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,12 @@ bool		ft_is_in(const char *str, char c);
 void		ft_bzero(void *s, size_t n);
 char		*ft_strchr(const char *s, int c);
 char		*ft_strrchr(const char *s, int c);
+char		*ft_strcat(char *dest, const char *src);
 size_t		ft_strlcat(char *dst, const char *src, size_t size);
+char		*ft_strcut(char	*str);
+char		*ft_strcpy(char *dest, const char *src);
 size_t		ft_strlcpy(char *dst, const char *src, size_t size);
+int			ft_strcmp(const char *s1, const char *s2);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 size_t		ft_strlen(const char *s);
 char		*ft_strrchr(const char *s, int c);
@@ -93,6 +97,7 @@ char		*ft_strdup(const char *s);
 void		*ft_calloc(size_t nmemb, size_t size);
 
 char		*ft_strjoin(char const *s1, char const *s2);
+char		*ft_strjoin_free(char *s1, char *s2, bool free_s1, bool free_s2);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
 char		*ft_strtrim(char const *s1, char const *set);
 char		**ft_split(char const *s, char c);
@@ -132,15 +137,6 @@ void		ft_lstclear(t_list **lst, void (*del)(void *));
 void		ft_lstiter(t_list *lst, void (*f)(void *));
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
-// need to delete
-ssize_t		first_newline(const char *buffer);
-// need to delete
-bool		pos_bytes(char *buffer, int fd, ssize_t *n_bytes, char **line);
 char		*get_next_line(int fd);
-
-// need to move
-char		*ft_strcat(char *dest, const char *src);
-char		*ft_strcpy(char *dest, const char *src);
-char		*ft_strjoin_free(char *s1, char *s2, bool free_s1, bool free_s2);
 
 #endif
