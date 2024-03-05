@@ -6,7 +6,7 @@
 #    By: msloot <msloot@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/14 19:19:04 by msloot            #+#    #+#              #
-#    Updated: 2024/02/14 19:51:06 by msloot           ###   ########.fr        #
+#    Updated: 2024/03/05 20:01:17 by msloot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ CFLAGS =	-Wall -Werror -Wextra
 UNAME = $(shell uname)
 
 LDFLAGS	=	-lXext -lX11 -lm
+# LDFLAGS		=	-Lmlx -lmlx -L/usr/lib $(MLXINC) -lXext -lX11 -lm -lz
 
 # **************************************************************************** #
 #	MAKEFILE	#
@@ -97,11 +98,11 @@ launch:
 	$(call progress_bar)
 
 $(NAME):	$(OBJ) $(LIBNAME) $(MLXNAME)
-	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJ) $(LIBNAME) $(MLXNAME) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) $(LIBNAME) $(MLXNAME) $(LDFLAGS) -o $(NAME)
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@mkdir -p $(dir $@) # 2> /dev/null || true
-	$(CC) $(CFLAGS) -Imlx -I$(INC) -c $< -o $@
+	$(CC) $(CFLAGS) $(MLXINC) $(LIBINC) -I$(INC) -c $< -o $@
 	@printf "█"
 
 $(LIBNAME):
