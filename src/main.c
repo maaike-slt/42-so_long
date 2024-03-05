@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:32:05 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/05 18:07:06 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/05 18:08:40 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	main(void)
 	mlx = mlx_init();
 	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
 
-	mlx_pixel_put(mlx, mlx_win, 1920/2, 1080/2, 0xFFFFFF);
+	mlx_pixel_put(mlx, mlx_win, 1920 / 2, 1080 / 2, 0xFFFFFF);
 
 	mlx_loop(mlx);
 }
