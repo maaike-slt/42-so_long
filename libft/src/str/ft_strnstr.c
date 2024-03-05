@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:17:41 by msloot            #+#    #+#             */
-/*   Updated: 2023/11/21 19:57:16 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/04 16:13:44 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	unsigned int	i;
-	unsigned int	little_len;
+	size_t	i;
+	size_t	little_len;
 
 	if (!big && len > 0)
 		((char *)big)[42] = 42;

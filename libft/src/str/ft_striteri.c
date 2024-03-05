@@ -6,15 +6,15 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 11:53:19 by msloot            #+#    #+#             */
-/*   Updated: 2023/11/21 19:57:16 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/04 16:13:44 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+void	ft_striteri(char *s, void (*f)(size_t, char*))
 {
-	unsigned int	i;
+	size_t	i;
 
 	if (!s || !f)
 		return ;

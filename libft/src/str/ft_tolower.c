@@ -6,11 +6,11 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 10:32:06 by msloot            #+#    #+#             */
-/*   Updated: 2023/10/24 11:59:50 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/04 16:13:44 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_tolower(int c)
+char	ft_tolower(char c)
 {
 	if (c >= 'A' && c <= 'Z')
 		return (c + 32);

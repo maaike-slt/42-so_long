@@ -6,13 +6,15 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:32:05 by msloot            #+#    #+#             */
-/*   Updated: 2024/02/29 17:30:51 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/05 18:07:06 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include "mlx.h"
 #include <stdio.h>
 
+/*
 int	main(int argc, char *argv[])
 {
 	int		fd;
@@ -39,4 +41,18 @@ int	main(int argc, char *argv[])
 	else
 		write(1, "Not the right amount of files, 1 file shall be given", 53);
 	return (0);
+}
+*/
+
+int	main(void)
+{
+	void	*mlx;
+	void	*mlx_win;
+
+	mlx = mlx_init();
+	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
+
+	mlx_pixel_put(mlx, mlx_win, 1920/2, 1080/2, 0xFFFFFF);
+
+	mlx_loop(mlx);
 }

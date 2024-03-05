@@ -1,37 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcut.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin_free.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/28 19:22:48 by msloot            #+#    #+#             */
-/*   Updated: 2024/02/29 15:45:46 by msloot           ###   ########.fr       */
+/*   Created: 2024/03/05 17:12:16 by msloot            #+#    #+#             */
+/*   Updated: 2024/03/05 17:12:29 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcut(char	*str)
+char	*ft_strjoin_free(char *s1, char *s2, bool free_s1, bool free_s2)
 {
-	size_t	i;
-	size_t	n;
-	char	*ret;
+	char	*joined;
 
-	i = 0;
-	n = 0;
-	if (ft_strlen(str) < 4)
-		return (str);
-	while (str[i + 4] != '\0')
-		i++;
-	if (str[i + 4] == '\0')
-	{
-		while (str[i] != '\0')
-		{
-			ret[n] = str[i];
-			i++;
-		}
-		ret[n] = str[i];
-	}
-	return (ret);
+	joined = ft_strjoin(s1, s2);
+	if (free_s1)
+		free(s1);
+	if (free_s2)
+		free(s2);
+	return (joined);
 }
