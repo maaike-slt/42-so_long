@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:32:05 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/05 18:08:40 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/05 20:39:20 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,28 @@ int	main(void)
 {
 	void	*mlx;
 	void	*mlx_win;
+	size_t	i;
+	size_t	n;
 
 	mlx = mlx_init();
 	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
 
+	n = 0;
+	while (n <= 1080)
+	{
+		i = 0;
+		while (i <= 1920)
+		{
+			mlx_pixel_put(mlx, mlx_win, i, n, 0xff0000);
+			i++;
+		}
+		n++;
+	}
 	mlx_pixel_put(mlx, mlx_win, 1920 / 2, 1080 / 2, 0xFFFFFF);
 
 	mlx_loop(mlx);
+
+	mlx_destroy_window(mlx, mlx_win);
+
+	free(mlx);
 }
