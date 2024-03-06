@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 19:43:14 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/06 19:51:06 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/06 19:57:09 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void	set_hook(t_env *env)
 {
-	mlx_hook(env->win, 17, 0L, close_win, env);
+	mlx_hook(env->win, ON_DESTROY, NO_EVENT, close_win, env);
 }

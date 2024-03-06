@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:59:49 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/06 19:49:11 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/06 19:56:24 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,16 @@ typedef struct s_env
 	void	*mlx;
 	void	*win;
 }	t_env;
+
+enum	e_event
+{
+	ON_DESTROY = 17
+};
+
+enum	e_mask
+{
+	NO_EVENT = 0L
+};
 
 void	set_hook(t_env *env);
 
