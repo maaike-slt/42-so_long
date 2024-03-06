@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 17:30:19 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/04 16:13:44 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/06 18:10:25 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,5 @@
 
 bool	ft_isalnum(char c)
 {
-	if (ft_isupper(c) || ft_islower(c) || ft_isdigit(c))
-		return (1);
-	return (0);
+	return (ft_isupper(c) || ft_islower(c) || ft_isdigit(c));
 }

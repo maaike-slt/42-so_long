@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 11:53:23 by msloot            #+#    #+#             */
-/*   Updated: 2023/11/21 19:57:16 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/06 18:09:24 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,6 @@ static size_t	ft_strlen_until_sep(const char *s, char c)
 	while (s[i] != '\0' && s[i] != c)
 		i++;
 	return (i);
-}
-
-static char	*ft_strndup(const char *src, size_t n)
-{
-	char	*dest;
-	size_t	i;
-
-	dest = (char *)malloc(sizeof(char) * (n + 1));
-	i = 0;
-	while (i < n)
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
 }
 
 static bool	process_word(char **split, ssize_t split_i, const char *s, char c)

@@ -6,13 +6,15 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 10:32:06 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/04 16:13:44 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/06 18:07:33 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 char	ft_toupper(char c)
 {
-	if (c >= 'a' && c <= 'z')
+	if (ft_islower(c))
 		return (c - 32);
 	return (c);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: msloot <msloot@student.42.fr>              +#+  +:+       +#+         #
+#    By: adelille <adelille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/21 17:15:16 by msloot            #+#    #+#              #
-#    Updated: 2024/03/05 17:18:23 by msloot           ###   ########.fr        #
+#    Updated: 2024/03/06 14:10:18 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,8 +46,9 @@ OBJ_PATH =			./obj/
 INC =				./inc/
 
 SRC_NAME = \
-	ft_is/ft_isalpha.c ft_is/ft_isdigit.c ft_is/ft_isalnum.c ft_is/ft_isascii.c ft_is/ft_isprint.c ft_is/ft_is_in.c \
-	ft_is/ft_isupper.c ft_is/ft_islower.c \
+	ft_is/ft_isalpha.c ft_is/ft_isdigit.c ft_is/ft_isalnum.c \
+	ft_is/ft_isascii.c ft_is/ft_isprint.c ft_is/ft_isspace.c \
+	ft_is/ft_is_in.c ft_is/ft_isupper.c ft_is/ft_islower.c \
 	str/ft_strlen.c str/ft_strchr.c str/ft_strrchr.c str/ft_strcmp.c str/ft_strncmp.c str/ft_strcpy.c str/ft_strlcpy.c \
 	str/ft_strlcat.c str/ft_strnstr.c \
 	str/ft_toupper.c str/ft_tolower.c \
@@ -60,7 +61,7 @@ SRC_NAME = \
 	convert/ft_nbr_convert_base.c convert/ft_nbr_convert.c \
 	convert/ft_unbr_convert_base.c convert/ft_unbr_convert.c \
 	convert/ft_check_base.c \
-	str/ft_strdup.c mem/ft_calloc.c \
+	str/ft_strdup.c str/ft_strndup.c mem/ft_calloc.c \
 	str/ft_strjoin.c str/ft_strjoin_free.c str/ft_substr.c str/ft_strtrim.c str/ft_split.c \
 	put/ft_putchar_fd.c put/ft_putchar.c put/ft_putstr_fd.c put/ft_putstr.c put/ft_putendl_fd.c \
 	put/ft_putnbr_base_fd.c put/ft_putnbr_base.c \

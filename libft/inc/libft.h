@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 14:56:09 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/04 17:39:06 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/06 14:09:48 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ bool		ft_isalnum(char c);
 bool		ft_isalpha(char c);
 bool		ft_isascii(int c);
 bool		ft_isdigit(char c);
+bool		ft_isspace(char c);
 bool		ft_isprint(char c);
 bool		ft_islower(char c);
 bool		ft_isupper(char c);
@@ -34,9 +35,9 @@ char		ft_tolower(char c);
 char		ft_toupper(char c);
 char		*ft_strchr(const char *s, char c);
 char		*ft_strrchr(const char *s, char c);
-char		*ft_strcat(char *dest, const char *src);
+char		*ft_strcat(char *dst, const char *src);
 size_t		ft_strlcat(char *dst, const char *src, size_t size);
-char		*ft_strcpy(char *dest, const char *src);
+char		*ft_strcpy(char *dst, const char *src);
 size_t		ft_strlcpy(char *dst, const char *src, size_t size);
 int			ft_strcmp(const char *s1, const char *s2);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
@@ -49,10 +50,10 @@ size_t		ft_nbrlen(ssize_t n);
 size_t		ft_unbrlen(size_t n);
 
 void		*ft_memset(void *s, char c, size_t n);
-void		*ft_memcpy(void *dest, const void *src, size_t n);
+void		*ft_memcpy(void *dst, const void *src, size_t n);
 int			ft_memcmp(const void *s1, const void *s2, size_t n);
 void		*ft_memchr(const void *s, char c, size_t n);
-void		*ft_memmove(void *dest, const void *src, size_t n);
+void		*ft_memmove(void *dst, const void *src, size_t n);
 
 typedef struct s_base
 {
@@ -94,6 +95,7 @@ char		*ft_unbr_convert(char *dst, size_t n, size_t n_len);
 size_t		ft_check_base(const char *base);
 
 char		*ft_strdup(const char *s);
+char		*ft_strndup(const char *s, size_t n);
 void		*ft_calloc(size_t nmemb, size_t size);
 
 char		*ft_strjoin(char const *s1, char const *s2);
