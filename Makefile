@@ -6,7 +6,7 @@
 #    By: msloot <msloot@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/14 19:19:04 by msloot            #+#    #+#              #
-#    Updated: 2024/03/06 18:59:35 by msloot           ###   ########.fr        #
+#    Updated: 2024/03/06 19:34:06 by msloot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ AR =	ar rcs
 RM = 	rm -rf
 
 CFLAGS =	-Wall -Werror -Wextra
-# CFLAGS +=	-g
+CFLAGS +=	-g
 # CFLAGS +=	-fsanitize=address
 
 UNAME = $(shell uname)
@@ -63,6 +63,7 @@ OBJ_PATH =	./obj/
 INC =		./inc/
 
 SRC_NAME =	main.c free.c \
+			event/close_win.c \
 
 SRC = $(addprefix $(SRC_PATH), $(SRC_NAME))
 

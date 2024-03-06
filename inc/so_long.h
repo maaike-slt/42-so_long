@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:59:49 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/06 19:03:33 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/06 19:36:38 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ typedef struct s_env
 }	t_env;
 
 void	free_env(t_env *env);
+int		close_win(t_env *env);
 
 #endif
