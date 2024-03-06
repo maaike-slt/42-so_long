@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:32:05 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/06 19:41:22 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/06 19:49:47 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,17 +55,6 @@ static bool	init(t_env *env)
 	return (true);
 }
 
-int	on_mouse_move(int x, int y, t_env *env)
-{
-	(void)env;
-	ft_putstr("mouse move to: ");
-	ft_putnbr(x);
-	ft_putchar(' ');
-	ft_putnbr(y);
-	ft_putchar('\n');
-	return (0);
-}
-
 int	main(void)
 {
 	t_env	env;
@@ -92,9 +81,7 @@ int	main(void)
 	}
 	mlx_pixel_put(env.mlx, env.win, 1920 / 2, 1080 / 2, 0xFFFFFF);
 
-	// mlx_hook(env.win, 6, 1L << 6, on_mouse_move, &env);
-
-	mlx_hook(env.win, 17, 0L, close_win, &env);
+	set_hook(&env);
 
 	mlx_loop(env.mlx);
 
