@@ -6,13 +6,11 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:32:05 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/06 17:45:29 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/06 19:08:52 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include "mlx.h"
-#include <stdio.h>
 
 /*
 int	main(int argc, char *argv[])
@@ -44,15 +42,30 @@ int	main(int argc, char *argv[])
 }
 */
 
+static bool	init(t_env *env)
+{
+	env->mlx = NULL;
+	env->win = NULL;
+	env->mlx = mlx_init();
+	if (!env->mlx)
+		return (false);
+	env->win = mlx_new_window(env->mlx, 1920, 1080, WINDOW_NAME);
+	if (!env->win)
+		return (false);
+	return (true);
+}
+
 int	main(void)
 {
-	void	*mlx;
-	void	*mlx_win;
+	t_env	env;
 	size_t	i;
 	size_t	n;
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
+	if (!init(&env))
+	{
+		free_env(&env);
+		return (1);
+	}
 
 	n = 0;
 	while (n <= 1080)
@@ -60,16 +73,14 @@ int	main(void)
 		i = 0;
 		while (i <= 1920)
 		{
-			mlx_pixel_put(mlx, mlx_win, i, n, 0xff0000);
+			mlx_pixel_put(env.mlx, env.win, i, n, 0xff0000);
 			i++;
 		}
 		n++;
 	}
-	mlx_pixel_put(mlx, mlx_win, 1920 / 2, 1080 / 2, 0xFFFFFF);
+	mlx_pixel_put(env.mlx, env.win, 1920 / 2, 1080 / 2, 0xFFFFFF);
 
-	mlx_loop(mlx);
+	mlx_loop(env.mlx);
 
-	mlx_destroy_window(mlx, mlx_win);
-
-	free(mlx);
+	free_env(&env);
 }

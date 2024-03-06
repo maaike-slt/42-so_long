@@ -1,35 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/15 15:59:49 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/06 19:03:33 by msloot           ###   ########.fr       */
+/*   Created: 2024/03/06 18:56:06 by msloot            #+#    #+#             */
+/*   Updated: 2024/03/06 19:02:08 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "so_long.h"
 
-# include <stdarg.h>
-# include <unistd.h>
-# include <fcntl.h>
-
-# include "../libft/inc/libft.h"
-# include "../mlx/mlx.h"
-
-# ifndef WINDOW_NAME
-#  define WINDOW_NAME	"so_my little pony"
-# endif
-
-typedef struct s_env
+void	free_env(t_env *env)
 {
-	void	*mlx;
-	void	*win;
-}	t_env;
-
-void	free_env(t_env *env);
-
-#endif
+	if (env->mlx && env->win)
+		mlx_destroy_window(env->mlx, env->win);
+	if (env->mlx)
+		free(env->mlx);
+}
