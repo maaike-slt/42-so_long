@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:32:05 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/10 14:41:54 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/10 15:21:27 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,9 @@ int	main(void)
 		return (1);
 	}
 
-	printf("%d\n%d\n%p", img_width, img_height, img);
+	load_sprite_lib(&env);
 
+	printf("%d\n%d\n%p\n", env.spr.wall.w, env.spr.wall.h, env.spr.wall.ptr);
 
 	n = 0;
 	i = 0;
@@ -85,13 +86,13 @@ int	main(void)
 	}
 	mlx_pixel_put(env.mlx, env.win, 1920 / 2, 1080 / 2, 0xFFFFFF);
 
-	mlx_put_image_to_window(env.mlx, env.win, img, 42, 42);
+	mlx_put_image_to_window(env.mlx, env.win, env.spr.wall.ptr, 42, 42);
 
 	set_hook(&env);
 
 	mlx_loop(env.mlx);
 
-	mlx_destroy_image(env.mlx, img);
+	mlx_destroy_image(env.mlx, env.spr.wall.ptr);
 
 	free_env(&env);
 }
