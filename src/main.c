@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:32:05 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/10 15:21:27 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/10 15:58:37 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,10 @@ int	main(void)
 	size_t	n;
 
 	if (!init(&env))
-	{
-		free_env(&env);
-		return (1);
-	}
+		return (free_env(&env));
 
-	load_sprite_lib(&env);
+	if (!load_sprite_lib(&env))
+		return (free_spr(&env) && free_env(&env));
 
 	printf("%d\n%d\n%p\n", env.spr.wall.w, env.spr.wall.h, env.spr.wall.ptr);
 
@@ -92,7 +90,7 @@ int	main(void)
 
 	mlx_loop(env.mlx);
 
-	mlx_destroy_image(env.mlx, env.spr.wall.ptr);
-
+	free_spr(&env);
 	free_env(&env);
+	return (0);
 }

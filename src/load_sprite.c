@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 14:17:48 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/10 15:39:37 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/10 15:45:46 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ static bool	load_sprite(t_env *env, t_img *img, char *xpm_path)
 
 bool	load_sprite_lib(t_env *env)
 {
-	load_sprite(env, &(env->spr.wall), "./sprite/wall.xpm");
+	env->spr.wall.ptr = NULL;
+	// put all sprites to NULL
+	if (!load_sprite(env, &(env->spr.wall), "./sprite/wall.xpm"))
+		return (false);
 	return (true);
 }
