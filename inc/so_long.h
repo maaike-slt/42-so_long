@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:59:49 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/06 19:56:24 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/10 14:24:48 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,14 @@ typedef struct s_env
 	void	*mlx;
 	void	*win;
 }	t_env;
+
+typedef struct s_img
+{
+	void	*ptr;
+	int		w;
+	int		h;
+}	t_img;
+
 
 enum	e_event
 {

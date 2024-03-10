@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:32:05 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/06 19:49:47 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/10 14:41:54 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ static bool	init(t_env *env)
 	return (true);
 }
 
+#include <stdio.h>
+
 int	main(void)
 {
 	t_env	env;
@@ -67,11 +69,13 @@ int	main(void)
 		return (1);
 	}
 
+	printf("%d\n%d\n%p", img_width, img_height, img);
+
+
 	n = 0;
 	i = 0;
 	while (n <= 1080)
 	{
-		// i = 0;
 		while (i <= 1920)
 		{
 			mlx_pixel_put(env.mlx, env.win, i, n, 0xff0000);
@@ -81,9 +85,13 @@ int	main(void)
 	}
 	mlx_pixel_put(env.mlx, env.win, 1920 / 2, 1080 / 2, 0xFFFFFF);
 
+	mlx_put_image_to_window(env.mlx, env.win, img, 42, 42);
+
 	set_hook(&env);
 
 	mlx_loop(env.mlx);
+
+	mlx_destroy_image(env.mlx, img);
 
 	free_env(&env);
 }
