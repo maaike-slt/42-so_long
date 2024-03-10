@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:32:05 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/10 15:58:37 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/10 20:41:43 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,9 @@ static bool	init(t_env *env)
 	return (true);
 }
 
-#include <stdio.h>
-
 int	main(void)
 {
 	t_env	env;
-	size_t	i;
-	size_t	n;
 
 	if (!init(&env))
 		return (free_env(&env));
@@ -69,22 +65,11 @@ int	main(void)
 	if (!load_sprite_lib(&env))
 		return (free_spr(&env) && free_env(&env));
 
-	printf("%d\n%d\n%p\n", env.spr.wall.w, env.spr.wall.h, env.spr.wall.ptr);
-
-	n = 0;
-	i = 0;
-	while (n <= 1080)
-	{
-		while (i <= 1920)
-		{
-			mlx_pixel_put(env.mlx, env.win, i, n, 0xff0000);
-			i++;
-		}
-		n++;
-	}
 	mlx_pixel_put(env.mlx, env.win, 1920 / 2, 1080 / 2, 0xFFFFFF);
 
-	mlx_put_image_to_window(env.mlx, env.win, env.spr.wall.ptr, 42, 42);
+	mlx_put_image_to_window(env.mlx, env.win, env.spr.wall.ptr, 0, 0);
+	mlx_put_image_to_window(env.mlx, env.win, env.spr.wall.ptr, 0, (0 + env.spr.wall.h / 2));
+	mlx_put_image_to_window(env.mlx, env.win, env.spr.wall.ptr, (0 + env.spr.wall.w), 0);
 
 	set_hook(&env);
 
