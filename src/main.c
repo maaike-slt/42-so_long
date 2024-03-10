@@ -6,14 +6,13 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:32:05 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/10 20:41:43 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/10 20:53:39 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-/*
-int	main(int argc, char *argv[])
+bool	load_map(t_env *env, const char *path)
 {
 	int		fd;
 	char	*line;
@@ -34,13 +33,12 @@ int	main(int argc, char *argv[])
 			close(fd);
 		}
 		else
-			write(1, "Not the right filetype, a .ber file is needed.", 46);
+			ft_putstr_fd("Not the right filetype, a .ber file is needed.\n", STDERR_FILENO);
 	}
 	else
-		write(1, "Not the right amount of files, 1 file shall be given", 53);
+		ft_putstr_fd("Not the right amount of files, 1 file shall be given.\n", STDERR_FILENO);
 	return (0);
 }
-*/
 
 static bool	init(t_env *env)
 {

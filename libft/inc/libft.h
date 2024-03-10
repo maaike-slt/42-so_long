@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 14:56:09 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/06 14:09:48 by adelille         ###   ########.fr       */
+/*   Updated: 2024/03/10 21:52:59 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 # include <unistd.h>
 # include <stdbool.h>
 # include <limits.h>
+
+# include "get_next_line.h"
+# include "ansi.h"
 
 bool		ft_isalnum(char c);
 bool		ft_isalpha(char c);
@@ -109,6 +112,7 @@ ssize_t		ft_putchar(char c);
 ssize_t		ft_putstr_fd(const char *s, int fd);
 ssize_t		ft_putstr(const char *s);
 ssize_t		ft_putendl_fd(const char *s, int fd);
+ssize_t		ft_puterr(const char *str);
 
 ssize_t		ft_putnbr_base_fd(ssize_t n, const t_base *base, int fd);
 ssize_t		ft_putnbr_base(ssize_t n, const t_base *base);
