@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:32:05 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/11 18:15:53 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/11 22:18:41 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static bool	init(t_env *env)
 {
 	env->mlx = NULL;
 	env->win = NULL;
+	env->map.ptr = NULL;
 	env->mlx = mlx_init();
 	if (!env->mlx)
 		return (false);
@@ -33,11 +34,11 @@ int	main(int argc, char *argv[])
 	if (argc != 2)
 		return (ft_puterr(
 				"not the right amount of files, 1 file shall be given\n"), 1);
-	if (!parse(&env, argv[1]))
-		return (1);
-
 	if (!init(&env))
 		return (free_env(&env));
+	if (!parse(&env, argv[1]))
+		return (free_env(&env));
+	// print the whole loaded map to the terminal + map width and height
 	if (!load_sprite_lib(&env))
 		return (free_spr(&env) && free_env(&env));
 

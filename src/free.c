@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 18:56:06 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/10 15:57:25 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/11 22:08:31 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 int	free_env(t_env *env)
 {
+	if (env->map.ptr)
+	{
+		// free the double array
+	}
 	if (env->mlx && env->win)
 		mlx_destroy_window(env->mlx, env->win);
 	if (env->mlx)

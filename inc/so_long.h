@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:59:49 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/11 18:08:11 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/11 22:07:15 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,31 @@ typedef struct s_sprite_lib
 	t_img	wall;
 }	t_sprite_lib;
 
+typedef char		t_cell;
+
+typedef struct s_map
+{
+	t_cell	**ptr;
+	size_t	w;
+	size_t	h;
+}	t_map;
+
 typedef struct s_env
 {
 	void			*mlx;
 	void			*win;
+	t_map			map;
 	t_sprite_lib	spr;
 }	t_env;
+
+enum	e_cell
+{
+	EMPTY = '0',
+	WALL = '1',
+	PONY = 'P',
+	EXIT = 'E',
+	TREASURE = 'C'
+};
 
 enum	e_event
 {
