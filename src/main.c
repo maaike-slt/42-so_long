@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:32:05 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/11 14:09:00 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/11 17:48:21 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,33 +47,15 @@ int	main(int argc, char *argv[])
 {
 	t_env	env;
 	char	*str;
-	char	*cut_str;
-	size_t	i;
-	size_t	n;
 
-	if (argc == 2)
-	{
-		str = argv[1];
-		n = ft_strlen(str) - 1;
-		while (str[n] != '\0')
-		{
-			cut_str[i] = str[n];
-			i++;
-			n++;
-		}
-		if (ft_strcmp(cut_str, ".ber") == 0)
-		{
-			load_map(&env, path);
-		}
-		else
-			ft_puterr("not the right filetype, a .ber file is needed\n");
-	}
-	else
-		ft_puterr("not the right amount of files, 1 file shall be given\n");
+	if (argc != 2)
+		return (ft_puterr(
+				"not the right amount of files, 1 file shall be given\n"), 1);
+	if (!parse(&env, argv[1]))
+		return (1);
 
 	if (!init(&env))
 		return (free_env(&env));
-
 	if (!load_sprite_lib(&env))
 		return (free_spr(&env) && free_env(&env));
 
