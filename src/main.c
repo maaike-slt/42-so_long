@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:32:05 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/10 20:53:39 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/11 14:09:00 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,27 +17,17 @@ bool	load_map(t_env *env, const char *path)
 	int		fd;
 	char	*line;
 
-	if (argc == 2)
+	fd = open(path, O_RDONLY);
+	printf("fd:\t%d\n\n", fd);
+	line = get_next_line(fd);
+	while (line != NULL)
 	{
-		if (ft_strcmp(ft_strcut(argv[1]), ".ber") == 0)
-		{
-			fd = open(argv[1], O_RDONLY);
-			printf("fd:\t%d\n\n", fd);
-			line = get_next_line(fd);
-			while (line != NULL)
-			{
-				printf("%s", line);
-				free(line);
-				line = get_next_line(fd);
-			}
-			close(fd);
-		}
-		else
-			ft_putstr_fd("Not the right filetype, a .ber file is needed.\n", STDERR_FILENO);
+		printf("%s", line);
+		free(line);
+		line = get_next_line(fd);
 	}
-	else
-		ft_putstr_fd("Not the right amount of files, 1 file shall be given.\n", STDERR_FILENO);
-	return (0);
+	close(fd);
+	return (true);
 }
 
 static bool	init(t_env *env)
@@ -53,9 +43,33 @@ static bool	init(t_env *env)
 	return (true);
 }
 
-int	main(void)
+int	main(int argc, char *argv[])
 {
 	t_env	env;
+	char	*str;
+	char	*cut_str;
+	size_t	i;
+	size_t	n;
+
+	if (argc == 2)
+	{
+		str = argv[1];
+		n = ft_strlen(str) - 1;
+		while (str[n] != '\0')
+		{
+			cut_str[i] = str[n];
+			i++;
+			n++;
+		}
+		if (ft_strcmp(cut_str, ".ber") == 0)
+		{
+			load_map(&env, path);
+		}
+		else
+			ft_puterr("not the right filetype, a .ber file is needed\n");
+	}
+	else
+		ft_puterr("not the right amount of files, 1 file shall be given\n");
 
 	if (!init(&env))
 		return (free_env(&env));
