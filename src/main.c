@@ -6,29 +6,11 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:32:05 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/11 17:48:21 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/11 18:15:53 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-bool	load_map(t_env *env, const char *path)
-{
-	int		fd;
-	char	*line;
-
-	fd = open(path, O_RDONLY);
-	printf("fd:\t%d\n\n", fd);
-	line = get_next_line(fd);
-	while (line != NULL)
-	{
-		printf("%s", line);
-		free(line);
-		line = get_next_line(fd);
-	}
-	close(fd);
-	return (true);
-}
 
 static bool	init(t_env *env)
 {
@@ -46,7 +28,7 @@ static bool	init(t_env *env)
 int	main(int argc, char *argv[])
 {
 	t_env	env;
-	char	*str;
+	size_t	i;
 
 	if (argc != 2)
 		return (ft_puterr(
@@ -63,7 +45,12 @@ int	main(int argc, char *argv[])
 
 	mlx_put_image_to_window(env.mlx, env.win, env.spr.wall.ptr, 0, 0);
 	mlx_put_image_to_window(env.mlx, env.win, env.spr.wall.ptr, 0, (0 + env.spr.wall.h / 2));
-	mlx_put_image_to_window(env.mlx, env.win, env.spr.wall.ptr, (0 + env.spr.wall.w), 0);
+	i = 1;
+	while (env.spr.wall.w * i <= 1920)
+	{
+		mlx_put_image_to_window(env.mlx, env.win, env.spr.wall.ptr, (0 + env.spr.wall.w * i), 0);
+		i++;
+	}
 
 	set_hook(&env);
 
