@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 17:30:43 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/12 18:12:53 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/12 18:17:45 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ bool	parse(t_env *env, const char *path)
 {
 	size_t	size;
 	size_t	n_line;
-	(void)n_line;
 
 	size = ft_strlen(path);
 	if (size < 4 || ft_strcmp(&path[size - 4], ".ber") != 0)
