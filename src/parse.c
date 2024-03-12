@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 17:30:43 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/11 22:17:33 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/12 18:12:53 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 #include <stdio.h>
 
 /*
-put the length of the first read line into env->map.w
-check that all read line have the same width as the first read one
-and put the number of line read into env->map.h
+// put the length of the first read line into env->map.w
+// check that all read line have the same width as the first read one
+// and put the number of line read into env->map.h
 */
 
 static size_t	load_map(t_env *env, const char *path)
@@ -38,17 +38,26 @@ static size_t	load_map(t_env *env, const char *path)
 	}
 	n_line = 0;
 	line = get_next_line(fd);
+	env->map.w = ft_strlen(&line[n_line]);
 	while (line != NULL)
 	{
 		if (env->map.ptr)
 			env->map.ptr[n_line] = line;
 		n_line++;
 		printf("%s", line);
+		if (ft_strlen(line) != env->map.w)
+		{
+			ft_puterr("the given map does not have a rectangular shape\n");
+			return (-1);
+		}
 		if (!env->map.ptr)
 			free(line);
 		line = get_next_line(fd);
 	}
 	close(fd);
+	env->map.h = n_line;
+	printf("\n%zu\n", env->map.w - 1);
+	printf("%zu\n", env->map.h);
 	return (n_line);
 }
 
@@ -56,6 +65,7 @@ bool	parse(t_env *env, const char *path)
 {
 	size_t	size;
 	size_t	n_line;
+	(void)n_line;
 
 	size = ft_strlen(path);
 	if (size < 4 || ft_strcmp(&path[size - 4], ".ber") != 0)
