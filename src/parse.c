@@ -6,25 +6,19 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 17:30:43 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/12 18:17:45 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/14 17:51:46 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include <stdio.h>
 
-/*
-// put the length of the first read line into env->map.w
-// check that all read line have the same width as the first read one
-// and put the number of line read into env->map.h
-*/
-
 static size_t	load_map(t_env *env, const char *path)
 {
 	int		fd;
-	char	*line;
 	size_t	n_line;
 
+	n_line = 0;
 	fd = open(path, O_RDONLY);
 	printf("fd:\t%d\n\n", fd);
 	if (fd < 0)
@@ -36,28 +30,8 @@ static size_t	load_map(t_env *env, const char *path)
 		ft_putchar_fd('\n', STDERR_FILENO);
 		return (0);
 	}
-	n_line = 0;
-	line = get_next_line(fd);
-	env->map.w = ft_strlen(&line[n_line]);
-	while (line != NULL)
-	{
-		if (env->map.ptr)
-			env->map.ptr[n_line] = line;
-		n_line++;
-		printf("%s", line);
-		if (ft_strlen(line) != env->map.w)
-		{
-			ft_puterr("the given map does not have a rectangular shape\n");
-			return (-1);
-		}
-		if (!env->map.ptr)
-			free(line);
-		line = get_next_line(fd);
-	}
+	n_line = render(env, fd, n_line);
 	close(fd);
-	env->map.h = n_line;
-	printf("\n%zu\n", env->map.w - 1);
-	printf("%zu\n", env->map.h);
 	return (n_line);
 }
 

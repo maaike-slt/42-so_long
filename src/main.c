@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:32:05 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/12 14:55:53 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/14 17:31:30 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int	main(int argc, char *argv[])
 		return (free_env(&env));
 	if (!parse(&env, argv[1]))
 		return (free_env(&env));
-	// print the whole loaded map to the terminal + map width and height
 	if (!load_sprite_lib(&env))
 		return (free_spr(&env) && free_env(&env));
 
