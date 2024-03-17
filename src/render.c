@@ -6,36 +6,23 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 16:38:52 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/14 17:28:26 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/17 19:08:39 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include <stdio.h>
 
-size_t	render(t_env *env, int fd, size_t n_line)
+void	render(t_env *env)
 {
-	char	*line;
+	size_t	i;
 
-	line = get_next_line(fd);
-	env->map.w = ft_strlen(&line[n_line]);
-	while (line != NULL)
+	i = 0;
+	while (i < env->map.h)
 	{
-		if (env->map.ptr)
-			env->map.ptr[n_line] = line;
-		n_line++;
-		printf("%s", line);
-		if (ft_strlen(line) != env->map.w)
-		{
-			ft_puterr("the given map does not have a rectangular shape\n");
-			return (-1);
-		}
-		if (!env->map.ptr)
-			free(line);
-		line = get_next_line(fd);
+		printf("%s\n", env->map.ptr[i]);
+		i++;
 	}
-	env->map.h = n_line;
-	printf("\n%zu\n", env->map.w - 1);
-	printf("%zu\n", env->map.h);
-	return (n_line);
+	printf("\nw: %zu\n", env->map.w);
+	printf("h: %zu\n", env->map.h);
 }

@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:59:49 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/14 16:52:20 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/17 18:59:53 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,6 @@ int		close_win(t_env *env);
 bool	load_sprite_lib(t_env *env);
 
 bool	parse(t_env *env, const char *path);
-size_t	render(t_env *env, int fd, size_t n_line);
+void	render(t_env *env);
 
 #endif

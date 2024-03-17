@@ -6,7 +6,7 @@
 #    By: msloot <msloot@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/21 17:15:16 by msloot            #+#    #+#              #
-#    Updated: 2024/03/17 18:29:13 by msloot           ###   ########.fr        #
+#    Updated: 2024/03/17 19:11:48 by msloot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,7 @@ SRC_NAME = \
 	ft_is/ft_isascii.c ft_is/ft_isprint.c ft_is/ft_isspace.c \
 	ft_is/ft_is_in.c ft_is/ft_isupper.c ft_is/ft_islower.c \
 	str/ft_strlen.c str/ft_strchr.c str/ft_strrchr.c str/ft_strcmp.c str/ft_strncmp.c str/ft_strcpy.c str/ft_strlcpy.c \
-	str/ft_strlcat.c str/ft_strnstr.c \
+	str/ft_strcat.c str/ft_strlcat.c str/ft_strnstr.c \
 	str/ft_toupper.c str/ft_tolower.c \
 	nbr/ft_nbrlen.c nbr/ft_nbrlen_base.c \
 	nbr/ft_unbrlen.c nbr/ft_unbrlen_base.c \
