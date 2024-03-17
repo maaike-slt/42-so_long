@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 14:56:09 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/10 21:52:59 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/17 18:41:07 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ void		*ft_memcpy(void *dst, const void *src, size_t n);
 int			ft_memcmp(const void *s1, const void *s2, size_t n);
 void		*ft_memchr(const void *s, char c, size_t n);
 void		*ft_memmove(void *dst, const void *src, size_t n);
+
+void		ft_free_2d(void ***arr, size_t size);
 
 typedef struct s_base
 {
@@ -142,6 +144,17 @@ void		ft_lstdelone(t_list *lst, void (*del)(void *));
 void		ft_lstclear(t_list **lst, void (*del)(void *));
 void		ft_lstiter(t_list *lst, void (*f)(void *));
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+/*
+typedef struct s_vec
+{
+	void	*p;
+	size_t	size;
+	size_t	capacity;
+}	t_vec;
+
+t_vec	*
+*/
 
 char		*get_next_line(int fd);
 
