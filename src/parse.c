@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 17:30:43 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/17 19:14:50 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/18 16:38:11 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,25 @@
 static size_t	read_map(t_env *env, int fd)
 {
 	char	*line;
+	size_t	len;
 
-	env->map.w = 0;
 	env->map.h = 0;
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
+		len = ft_strlen(line);
+		if (!len)
+			return (ft_puterr("found an empty line while reading the map"));
+		if (line[len - 1] == '\n')
+		{
+			line[len - 1] = '\0';
+			len--;
+		}
 		if (!env->map.ptr)
 		{
 			if (env->map.h == 0)
-				env->map.w = ft_strlen(line);
-			else if (env->map.w != ft_strlen(line))
+				env->map.w = len;
+			else if (env->map.w != len)
 				return (ft_puterr(
 						"the given map does not have a rectangular shape\n"),
 					0);
