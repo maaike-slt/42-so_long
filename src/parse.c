@@ -6,11 +6,26 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 17:30:43 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/18 16:38:11 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/18 17:01:31 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+static size_t	empty_line(char *line)
+{
+	size_t	len;
+
+	len = ft_strlen(line);
+	if (!len || line[0] == '\n')
+		return (ft_puterr("found an empty line while reading the map"), 0);
+	if (line[len - 1] == '\n')
+	{
+		line[len - 1] = '\0';
+		len--;
+	}
+	return (len);
+}
 
 static size_t	read_map(t_env *env, int fd)
 {
@@ -21,22 +36,16 @@ static size_t	read_map(t_env *env, int fd)
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
-		len = ft_strlen(line);
+		len = empty_line(line);
 		if (!len)
-			return (ft_puterr("found an empty line while reading the map"));
-		if (line[len - 1] == '\n')
-		{
-			line[len - 1] = '\0';
-			len--;
-		}
+			return (0);
 		if (!env->map.ptr)
 		{
 			if (env->map.h == 0)
 				env->map.w = len;
 			else if (env->map.w != len)
-				return (ft_puterr(
-						"the given map does not have a rectangular shape\n"),
-					0);
+				return (\
+ft_puterr("the given map does not have a rectangular shape\n"), 0);
 			free(line);
 		}
 		else

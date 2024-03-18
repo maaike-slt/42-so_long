@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:32:05 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/17 19:00:46 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/18 18:11:09 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ static bool	init(t_env *env)
 int	main(int argc, char *argv[])
 {
 	t_env	env;
-	size_t	i;
 
 	if (argc != 2)
 		return (ft_puterr(
@@ -45,14 +44,7 @@ int	main(int argc, char *argv[])
 
 	mlx_pixel_put(env.mlx, env.win, 1920 / 2, 1080 / 2, 0xFFFFFF);
 
-	mlx_put_image_to_window(env.mlx, env.win, env.spr.wall.ptr, 0, 0);
-	mlx_put_image_to_window(env.mlx, env.win, env.spr.wall.ptr, 0, (0 + env.spr.wall.h / 2));
-	i = 1;
-	while (env.spr.wall.w * i <= 1920)
-	{
-		mlx_put_image_to_window(env.mlx, env.win, env.spr.wall.ptr, (0 + env.spr.wall.w * i), 0);
-		i++;
-	}
+//	mlx_put_image_to_window(env.mlx, env.win, env.spr.wall.ptr, 0, (0 + env.spr.wall.h / 2));
 
 	mlx_loop(env.mlx);
 

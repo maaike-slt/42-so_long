@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 16:38:52 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/17 19:08:39 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/18 18:09:16 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,23 @@
 
 void	render(t_env *env)
 {
-	size_t	i;
+	size_t	y;
+	size_t	x;
 
-	i = 0;
-	while (i < env->map.h)
+	y = 0;
+	while (y < env->map.h)
 	{
-		printf("%s\n", env->map.ptr[i]);
-		i++;
+		x = 0;
+		while (x < env->map.w)
+		{
+			if (env->map.ptr[y][x] == WALL)
+				mlx_put_image_to_window(
+					env->mlx, env->win, env->spr.wall.ptr,
+					(0 + env->spr.wall.w * x), (0 + env->spr.wall.h * y));
+			x++;
+		}
+		printf("%s\n", env->map.ptr[y]);
+		y++;
 	}
 	printf("\nw: %zu\n", env->map.w);
 	printf("h: %zu\n", env->map.h);
