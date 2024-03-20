@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:32:05 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/20 15:20:57 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/20 18:12:46 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static bool	init(t_env *env)
 {
 	env->mlx = NULL;
-	env->win = NULL;
+	env->win.ptr = NULL;
 	env->map.ptr = NULL;
 	env->mlx = mlx_init();
 	if (!env->mlx)
@@ -37,13 +37,9 @@ int	main(int argc, char *argv[])
 	if (!load_sprite_lib(&env))
 		return (free_spr(&env) && free_env(&env));
 	if (!create_window(&env))
-		return (free_env(&env));
+		return (free_spr(&env) && free_env(&env));
 	set_hook(&env);
 	render(&env);
-
-	mlx_pixel_put(env.mlx, env.win, 1920 / 2, 1080 / 2, 0xFFFFFF);
-
-//	mlx_put_image_to_window(env.mlx, env.win, env.spr.wall.ptr, 0, (0 + env.spr.wall.h / 2));
 
 	mlx_loop(env.mlx);
 

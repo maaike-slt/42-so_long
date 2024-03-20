@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:59:49 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/20 15:21:41 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/20 18:13:14 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,16 @@ typedef struct s_img
 
 typedef struct s_sprite_lib
 {
+	t_img	floor;
 	t_img	wall;
 }	t_sprite_lib;
+
+typedef struct s_win
+{
+	void	*ptr;
+	size_t	w;
+	size_t	h;
+}	t_win;
 
 typedef char		t_cell;
 
@@ -48,7 +56,7 @@ typedef struct s_map
 typedef struct s_env
 {
 	void			*mlx;
-	void			*win;
+	t_win			win;
 	t_map			map;
 	t_sprite_lib	spr;
 }	t_env;
