@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:32:05 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/18 18:11:09 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/20 15:20:57 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,6 @@ static bool	init(t_env *env)
 	env->map.ptr = NULL;
 	env->mlx = mlx_init();
 	if (!env->mlx)
-		return (false);
-	env->win = mlx_new_window(env->mlx, 1920, 1080, WINDOW_NAME);
-	if (!env->win)
 		return (false);
 	return (true);
 }
@@ -39,6 +36,8 @@ int	main(int argc, char *argv[])
 		return (free_env(&env));
 	if (!load_sprite_lib(&env))
 		return (free_spr(&env) && free_env(&env));
+	if (!create_window(&env))
+		return (free_env(&env));
 	set_hook(&env);
 	render(&env);
 
