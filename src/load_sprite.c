@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 14:17:48 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/20 17:56:42 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/21 16:34:45 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,15 @@ bool	load_sprite_lib(t_env *env)
 {
 	env->spr.wall.ptr = NULL;
 	env->spr.floor.ptr = NULL;
+	env->spr.exit.ptr = NULL;
 	// put all sprites to NULL
 	if (!load_sprite(env, &(env->spr.wall), "./sprite/wall.xpm"))
 		return (false);
-	// need to check that all sprite have same width as wall and same height as wall
-	// beside floor
 	if (!load_sprite(env, &(env->spr.floor), "./sprite/floor.xpm"))
+		return (false);
+	// need to check that all sprite have same width and height as wall
+	// beside floor
+	if (!load_sprite(env, &(env->spr.exit), "./sprite/exit.xpm"))
 		return (false);
 	return (true);
 }
