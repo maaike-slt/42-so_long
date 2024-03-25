@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 16:38:52 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/21 16:38:14 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/25 19:37:04 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,14 @@ void	render(t_env *env)
 			else if (env->map.ptr[y][x] == EXIT)
 				mlx_put_image_to_window(
 					env->mlx, env->win.ptr, env->spr.exit.ptr,
+					env->spr.wall.w * x, env->spr.wall.h * y);
+			else if (env->map.ptr[y][x] == PONY)
+				mlx_put_image_to_window(
+					env->mlx, env->win.ptr, env->spr.pony.ptr,
+					env->spr.wall.w * x, env->spr.wall.h * y - (env->spr.pony.h - env->spr.wall.h));
+			else if (env->map.ptr[y][x] == TREASURE)
+				mlx_put_image_to_window(
+					env->mlx, env->win.ptr, env->spr.treasure.ptr,
 					env->spr.wall.w * x, env->spr.wall.h * y);
 			x++;
 		}
