@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:59:49 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/25 19:38:19 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/26 14:37:27 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ enum	e_cell
 
 enum	e_event
 {
+	KEY_PRESS = 2,
 	ON_DESTROY = 17
 };
 
@@ -88,6 +89,7 @@ void	set_hook(t_env *env);
 int		free_env(t_env *env);
 int		free_spr(t_env *env);
 int		close_win(t_env *env);
+int		move_pony(int keycode, t_env * env);
 
 bool	load_sprite_lib(t_env *env);
 bool	create_window(t_env *env);

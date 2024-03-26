@@ -6,7 +6,7 @@
 #    By: msloot <msloot@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/14 19:19:04 by msloot            #+#    #+#              #
-#    Updated: 2024/03/20 15:16:47 by msloot           ###   ########.fr        #
+#    Updated: 2024/03/26 13:26:04 by msloot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,7 +64,7 @@ INC =		./inc/
 
 SRC_NAME =	main.c free.c \
 			load_sprite.c parse.c render.c create_window.c \
-			event/hook.c event/close_win.c \
+			event/hook.c event/close_win.c event/move_pony.c \
 
 SRC = $(addprefix $(SRC_PATH), $(SRC_NAME))
 

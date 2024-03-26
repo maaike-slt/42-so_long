@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hook.c                                             :+:      :+:    :+:   */
+/*   move_pony.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/06 19:43:14 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/26 14:41:44 by msloot           ###   ########.fr       */
+/*   Created: 2024/03/26 13:26:25 by msloot            #+#    #+#             */
+/*   Updated: 2024/03/26 14:42:16 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include <stdio.h>
 
-void	set_hook(t_env *env)
+int	move_pony(int keycode, t_env *env)
 {
-//	mlx_key_hook(env->win.ptr, move_pony, env);
-//	mlx_loop_hook(env->mlx, move_pony, env);
-//	mlx_loop(env->mlx);
-	mlx_hook(env->win.ptr, ON_DESTROY, NO_EVENT, close_win, env);
+	(void)keycode;
+	(void)env;
+
+	printf("Hello from key_hook!\n");
+	return (0);
 }
