@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 17:30:43 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/21 16:06:34 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/27 13:15:06 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,41 @@ static size_t	load_map(t_env *env, const char *path)
 	return (n_line);
 }
 
+static void	set_pos(t_coord *c, size_t x, size_t y)
+{
+	c->x = x;
+	c->y = y;
+}
+
+static bool	pos(t_env *env)
+{
+	size_t	x;
+	size_t	y;
+	bool	seen_pony;
+
+	seen_pony = false;
+	y = 0;
+	while (y < env->map.h)
+	{
+		x = 0;
+		while (x < env->map.w)
+		{
+			if (env->map.ptr[y][x] == EXIT)
+				set_pos(&(env->map.pos.exit), x, y);
+			else if (env->map.ptr[y][x] == PONY)
+			{
+				if (seen_pony == true)
+					return (ft_puterr("too many ponies in this map, only one allowed\n"));
+				set_pos(&(env->map.pos.pony), x, y);
+				seen_pony = true;
+			}
+			x++;
+		}
+		y++;
+	}
+	return (true);
+}
+
 bool	parse(t_env *env, const char *path)
 {
 	size_t	size;
@@ -93,5 +128,7 @@ bool	parse(t_env *env, const char *path)
 	env->map.ptr = (t_cell **)malloc(sizeof(t_cell *) * (n_line + 1));
 	if (!env->map.ptr)
 		return (false);
-	return (load_map(env, path) > 0);
+	if (load_map(env, path) <= 0)
+		return (false);
+	return (pos(env));
 }
