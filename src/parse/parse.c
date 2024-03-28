@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 17:30:43 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/28 19:06:55 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/28 19:17:53 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static bool	pos(t_env *env)
 		y++;
 	}
 	if (seen_treasure == false)
-		return (ft_puterr("too many ponies in this map, only one allowed\n"), false);
+		return (ft_puterr("too few treasures in this map, at least one needed\n"), false);
 	return (true);
 }
 
