@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 14:17:48 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/27 17:12:19 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/28 18:29:48 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,15 @@ bool	load_sprite_lib(t_env *env)
 	// beside floor
 	if (!load_sprite(env, &(env->spr.exit_closed), "./sprite/exit_closed.xpm"))
 		return (false);
+	if (env->spr.exit_closed.w != env->spr.wall.w || env->spr.exit_closed.h != env->spr.wall.h)
+		return (ft_puterr("the exit must have the same size as the wall"), false);
 	if (!load_sprite(env, &(env->spr.pony), "./sprite/pony.xpm"))
 		return (false);
+	if (env->spr.pony.w != env->spr.wall.w || env->spr.pony.h != env->spr.wall.h)
+		return (ft_puterr("the pony must have the same size as the wall"), false);
 	if (!load_sprite(env, &(env->spr.treasure), "./sprite/treasure.xpm"))
 		return (false);
+	if (env->spr.treasure.w != env->spr.wall.w || env->spr.treasure.h != env->spr.wall.h)
+		return (ft_puterr("the treasure must have the same size as the wall"), false);
 	return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 13:26:25 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/28 18:07:53 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/28 19:12:43 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,20 @@ bool	movement(int keycode, t_env *env)
 		return (false);
 }
 
+bool	closing_key(int keycode, t_env *env)
+{
+	if (keycode == K_Q || keycode == K_ESC)
+		return (close_win(env), true);
+	return (false);
+}
+
 int	handle_keycode(int keycode, t_env *env)
 {
 	// (void)keycode;
 	(void)env;
 	if (movement(keycode, env))
+		return (0);
+	if (closing_key(keycode, env))
 		return (0);
 	else
 	{

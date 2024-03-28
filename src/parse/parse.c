@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 17:30:43 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/28 18:20:15 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/28 19:06:55 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,13 @@ static bool	pos(t_env *env)
 {
 	size_t	x;
 	size_t	y;
+	bool	seen_exit;
 	bool	seen_pony;
+	bool	seen_treasure;
 
+	seen_exit = false;
 	seen_pony = false;
+	seen_treasure = false;
 	y = 0;
 	while (y < env->map.h)
 	{
@@ -32,18 +36,27 @@ static bool	pos(t_env *env)
 		while (x < env->map.w)
 		{
 			if (env->map.ptr[y][x] == EXIT)
+			{
+				if (seen_exit == true)
+					return (ft_puterr("too many exits in this map, only one allowed\n"), false);
 				set_pos(&(env->map.pos.exit), x, y);
+				seen_exit = true;
+			}
 			else if (env->map.ptr[y][x] == PONY)
 			{
 				if (seen_pony == true)
-					return (ft_puterr("too many ponies in this map, only one allowed\n"));
+					return (ft_puterr("too many ponies in this map, only one allowed\n"), false);
 				set_pos(&(env->map.pos.pony), x, y);
 				seen_pony = true;
 			}
+			else if (env->map.ptr[y][x] == TREASURE)
+				seen_treasure = true;
 			x++;
 		}
 		y++;
 	}
+	if (seen_treasure == false)
+		return (ft_puterr("too many ponies in this map, only one allowed\n"), false);
 	return (true);
 }
 
