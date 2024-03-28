@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:59:49 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/27 17:11:53 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/28 18:18:46 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,5 +127,6 @@ bool	create_window(t_env *env);
 
 bool	parse(t_env *env, const char *path);
 void	render(t_env *env);
+size_t	load_map(t_env *env, const char *path);
 
 #endif

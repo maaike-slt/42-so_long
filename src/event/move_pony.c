@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 13:26:25 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/27 16:32:47 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/28 18:07:53 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,13 @@ void	move_pony(t_env *env, ssize_t x, ssize_t y)
 {
 	if (env->map.ptr[env->map.pos.pony.y + y][env->map.pos.pony.x + x] == WALL)
 		return ;
+	env->map.ptr[env->map.pos.pony.y][env->map.pos.pony.x] = EMPTY;
+	env->map.ptr[env->map.pos.pony.y + y][env->map.pos.pony.x + x] = PONY;
 	env->map.pos.pony.x += x;
 	env->map.pos.pony.y += y;
 	printf("%ld\n", x);
 	printf("%ld\n", y);
+	render(env);
 }
 
 bool	movement(int keycode, t_env *env)

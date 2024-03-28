@@ -6,7 +6,7 @@
 #    By: msloot <msloot@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/14 19:19:04 by msloot            #+#    #+#              #
-#    Updated: 2024/03/26 13:26:04 by msloot           ###   ########.fr        #
+#    Updated: 2024/03/28 18:16:01 by msloot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,8 @@ OBJ_PATH =	./obj/
 INC =		./inc/
 
 SRC_NAME =	main.c free.c \
-			load_sprite.c parse.c render.c create_window.c \
+			load_sprite.c parse.c create_window.c \
+			render/render.c render/load_map.c\
 			event/hook.c event/close_win.c event/move_pony.c \
 
 SRC = $(addprefix $(SRC_PATH), $(SRC_NAME))
