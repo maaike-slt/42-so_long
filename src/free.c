@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 18:56:06 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/27 17:12:19 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/31 03:14:35 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,12 @@ int	free_spr(t_env *env)
 		mlx_destroy_image(env->mlx, env->spr.floor.ptr);
 	if (env->spr.exit_closed.ptr)
 		mlx_destroy_image(env->mlx, env->spr.exit_closed.ptr);
-	if (env->spr.pony.ptr)
-		mlx_destroy_image(env->mlx, env->spr.pony.ptr);
+	if (env->spr.exit_open.ptr)
+		mlx_destroy_image(env->mlx, env->spr.exit_open.ptr);
+	if (env->spr.pony_left.ptr)
+		mlx_destroy_image(env->mlx, env->spr.pony_left.ptr);
+	if (env->spr.pony_right.ptr)
+		mlx_destroy_image(env->mlx, env->spr.pony_right.ptr);
 	if (env->spr.treasure.ptr)
 		mlx_destroy_image(env->mlx, env->spr.treasure.ptr);
 	return (1);

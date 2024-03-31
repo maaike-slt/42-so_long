@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 16:38:52 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/27 17:11:21 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/31 03:21:15 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,27 @@ void	render(t_env *env)
 					env->mlx, env->win.ptr, env->spr.wall.ptr,
 					env->spr.wall.w * x, env->spr.wall.h * y);
 			else if (env->map.ptr[y][x] == EXIT)
-				mlx_put_image_to_window(
-					env->mlx, env->win.ptr, env->spr.exit_closed.ptr,
-					env->spr.wall.w * x, env->spr.wall.h * y);
+			{
+				if (env->map.pos.treasure_num == env->map.pos.taken_treasure)
+					mlx_put_image_to_window(
+						env->mlx, env->win.ptr, env->spr.exit_open.ptr,
+						env->spr.wall.w * x, env->spr.wall.h * y);
+				else
+					mlx_put_image_to_window(
+						env->mlx, env->win.ptr, env->spr.exit_closed.ptr,
+						env->spr.wall.w * x, env->spr.wall.h * y);
+			}
 			else if (env->map.ptr[y][x] == PONY)
-				mlx_put_image_to_window(
-					env->mlx, env->win.ptr, env->spr.pony.ptr,
-					env->spr.wall.w * x, env->spr.wall.h * y - (env->spr.pony.h - env->spr.wall.h));
+			{
+				if (env->spr.pony_view_right)
+					mlx_put_image_to_window(
+						env->mlx, env->win.ptr, env->spr.pony_right.ptr,
+						env->spr.wall.w * x, env->spr.wall.h * y);
+				else
+					mlx_put_image_to_window(
+						env->mlx, env->win.ptr, env->spr.pony_left.ptr,
+						env->spr.wall.w * x, env->spr.wall.h * y);
+			}
 			else if (env->map.ptr[y][x] == TREASURE)
 				mlx_put_image_to_window(
 					env->mlx, env->win.ptr, env->spr.treasure.ptr,

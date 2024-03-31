@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 14:17:48 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/31 01:51:26 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/31 03:18:59 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,9 @@ bool	load_sprite_lib(t_env *env)
 	env->spr.floor.ptr = NULL;
 	env->spr.exit_closed.ptr = NULL;
 	env->spr.exit_open.ptr = NULL;
-	env->spr.pony.ptr = NULL;
+	env->spr.pony_left.ptr = NULL;
+	env->spr.pony_right.ptr = NULL;
+	env->spr.pony_view_right = true;
 	env->spr.treasure.ptr = NULL;
 	// put all sprites to NULL
 	if (!load_sprite(env, &(env->spr.wall), "./sprite/wall.xpm"))
@@ -60,10 +62,10 @@ bool	load_sprite_lib(t_env *env)
 		return (false);
 	if (env->spr.exit_closed.w != env->spr.wall.w || env->spr.exit_closed.h != env->spr.wall.h)
 		return (ft_puterr("the exit must have the same size as the wall"), false);
-	if (!load_sprite(env, &(env->spr.pony), "./sprite/pony.xpm"))
+	if (!load_sprite(env, &(env->spr.pony_left), "./sprite/pony_left.xpm"))
 		return (false);
-	if (env->spr.pony.w != env->spr.wall.w || env->spr.pony.h != env->spr.wall.h)
-		return (ft_puterr("the pony must have the same size as the wall"), false);
+	if (!load_sprite(env, &(env->spr.pony_right), "./sprite/pony_right.xpm"))
+		return (false);
 	if (!load_sprite(env, &(env->spr.treasure), "./sprite/treasure.xpm"))
 		return (false);
 	if (env->spr.treasure.w != env->spr.wall.w || env->spr.treasure.h != env->spr.wall.h)
