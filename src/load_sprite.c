@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 14:17:48 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/28 18:29:48 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/31 01:51:26 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ bool	load_sprite_lib(t_env *env)
 	env->spr.wall.ptr = NULL;
 	env->spr.floor.ptr = NULL;
 	env->spr.exit_closed.ptr = NULL;
+	env->spr.exit_open.ptr = NULL;
 	env->spr.pony.ptr = NULL;
 	env->spr.treasure.ptr = NULL;
 	// put all sprites to NULL
@@ -54,6 +55,8 @@ bool	load_sprite_lib(t_env *env)
 	// need to check that all sprite have same width and height as wall
 	// beside floor
 	if (!load_sprite(env, &(env->spr.exit_closed), "./sprite/exit_closed.xpm"))
+		return (false);
+	if (!load_sprite(env, &(env->spr.exit_open), "./sprite/exit_open.xpm"))
 		return (false);
 	if (env->spr.exit_closed.w != env->spr.wall.w || env->spr.exit_closed.h != env->spr.wall.h)
 		return (ft_puterr("the exit must have the same size as the wall"), false);

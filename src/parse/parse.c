@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 17:30:43 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/28 19:17:53 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/31 01:32:35 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ static bool	pos(t_env *env)
 	size_t	y;
 	bool	seen_exit;
 	bool	seen_pony;
-	bool	seen_treasure;
 
 	seen_exit = false;
 	seen_pony = false;
-	seen_treasure = false;
+	env->map.pos.taken_treasure = 0;
+	env->map.pos.treasure_num = 0;
 	y = 0;
 	while (y < env->map.h)
 	{
@@ -50,12 +50,12 @@ static bool	pos(t_env *env)
 				seen_pony = true;
 			}
 			else if (env->map.ptr[y][x] == TREASURE)
-				seen_treasure = true;
+				env->map.pos.treasure_num++;
 			x++;
 		}
 		y++;
 	}
-	if (seen_treasure == false)
+	if (env->map.pos.treasure_num == 0)
 		return (ft_puterr("too few treasures in this map, at least one needed\n"), false);
 	return (true);
 }

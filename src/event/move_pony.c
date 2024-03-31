@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 13:26:25 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/28 19:12:43 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/31 01:54:59 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,23 @@
 
 void	move_pony(t_env *env, ssize_t x, ssize_t y)
 {
-	if (env->map.ptr[env->map.pos.pony.y + y][env->map.pos.pony.x + x] == WALL)
+	size_t	new_y;
+	size_t	new_x;
+
+	new_y = env->map.pos.pony.y + y;
+	new_x = env->map.pos.pony.x + x;
+	if (env->map.ptr[new_y][new_x] == WALL ||
+			(env->map.ptr[new_y][new_x] == EXIT &&
+			env->map.pos.taken_treasure < env->map.pos.treasure_num))
 		return ;
+	else if (env->map.ptr[new_y][new_x] == TREASURE)
+		env->map.pos.taken_treasure++;
 	env->map.ptr[env->map.pos.pony.y][env->map.pos.pony.x] = EMPTY;
-	env->map.ptr[env->map.pos.pony.y + y][env->map.pos.pony.x + x] = PONY;
-	env->map.pos.pony.x += x;
-	env->map.pos.pony.y += y;
-	printf("%ld\n", x);
-	printf("%ld\n", y);
+	env->map.ptr[new_y][new_x] = PONY;
+	env->map.pos.pony.y = new_y;
+	env->map.pos.pony.x = new_x;
+	printf("%zu\n", env->map.pos.treasure_num);
+	printf("%zu\n", env->map.pos.taken_treasure);
 	render(env);
 }
 

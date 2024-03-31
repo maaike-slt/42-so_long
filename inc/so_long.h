@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:59:49 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/28 18:18:46 by msloot           ###   ########.fr       */
+/*   Updated: 2024/03/31 01:51:11 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_sprite_lib
 	t_img	floor;
 	t_img	wall;
 	t_img	exit_closed;
+	t_img	exit_open;
 	t_img	pony;
 	t_img	treasure;
 }	t_sprite_lib;
@@ -61,6 +62,7 @@ typedef struct s_pos
 	t_coord	pony;
 	t_coord	exit;
 	size_t	treasure_num;
+	size_t	taken_treasure;
 }	t_pos;
 
 
