@@ -6,7 +6,7 @@
 #    By: msloot <msloot@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/21 17:15:16 by msloot            #+#    #+#              #
-#    Updated: 2024/03/17 19:11:48 by msloot           ###   ########.fr        #
+#    Updated: 2024/04/04 20:50:28 by msloot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,7 +71,7 @@ SRC_NAME = \
 	str/ft_striteri.c str/ft_strmapi.c \
 	lst/ft_lstsize.c lst/ft_lstlast.c lst/ft_lstnew.c lst/ft_lstadd_front.c lst/ft_lstadd_back.c lst/ft_lstiter.c \
 	lst/ft_lstdelone.c lst/ft_lstclear.c lst/ft_lstmap.c \
-	read/get_next_line.c \
+	read/get_next_line.c read/count_line.c \
 
 SRC =				$(addprefix $(SRC_PATH), $(SRC_NAME))
 # SRC =				$(wildcard $(SRC_PATH)*.c) $(wildcard $(SRC_PATH)**/*.c)

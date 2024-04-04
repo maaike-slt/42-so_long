@@ -6,12 +6,14 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:59:49 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/31 03:17:49 by msloot           ###   ########.fr       */
+/*   Updated: 2024/04/04 21:08:43 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
+
+# define WITH_OPEN
 
 # include <stdarg.h>
 # include <unistd.h>
@@ -71,6 +73,7 @@ typedef struct s_pos
 typedef struct s_map
 {
 	t_cell	**ptr;
+	t_cell	**mapcopy;
 	size_t	w;
 	size_t	h;
 	t_pos	pos;

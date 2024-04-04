@@ -6,7 +6,7 @@
 #    By: msloot <msloot@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/14 19:19:04 by msloot            #+#    #+#              #
-#    Updated: 2024/03/28 18:34:49 by msloot           ###   ########.fr        #
+#    Updated: 2024/04/04 21:04:48 by msloot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,7 +64,7 @@ INC =		./inc/
 
 SRC_NAME =	main.c free.c \
 			load_sprite.c render.c create_window.c \
-			parse/parse.c parse/load_map.c\
+			parse/parse.c parse/load_map.c \
 			event/hook.c event/close_win.c event/move_pony.c \
 
 SRC = $(addprefix $(SRC_PATH), $(SRC_NAME))
@@ -110,7 +110,7 @@ $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 
 $(LIBNAME):
 	@printf "$(D)$(B)$(BLU)\n$(NAME) objects compiled\n\n$(D)"
-	@$(MAKE) -C $(LIBPATH)
+	@$(MAKE) -C $(LIBPATH) CFLAGS+=-DWITH_OPEN=1
 
 $(MLXNAME):
 	@$(MAKE) -C $(MLXPATH) > /dev/null 2>&1 || true

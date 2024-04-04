@@ -6,11 +6,31 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 18:19:46 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/28 18:21:53 by msloot           ###   ########.fr       */
+/*   Updated: 2024/04/04 21:10:26 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+static bool	check_line(char *line, size_t len, bool first_or_last)
+{
+	size_t	i;
+
+	i = 0;
+	while (line[i])
+	{
+		if ((first_or_last == true || i == 0) && line[i] != WALL)
+			return (ft_puterr("map has to be surrounded by walls\n"), false);
+		else if ((first_or_last == true || i == len - 1) && line[i] != WALL)
+			return (ft_puterr("map has to be surrounded by walls\n"), false);
+		else if ((line[i] != WALL && line[i] != EMPTY && line[i] != PONY)
+			&& line[i] != TREASURE && line[i] != EXIT)
+			return (ft_puterr(
+					"this map is composed with an unvalid character\n"), false);
+		i++;
+	}
+	return (true);
+}
 
 static size_t	empty_line(char *line)
 {
@@ -27,17 +47,22 @@ static size_t	empty_line(char *line)
 	return (len);
 }
 
-static size_t	read_map(t_env *env, int fd)
+static size_t	read_map(t_env *env, int fd, size_t	line_count)
 {
 	char	*line;
 	size_t	len;
+	bool	first_or_last_line;
 
 	env->map.h = 0;
+	first_or_last_line = true;
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
 		len = empty_line(line);
 		if (!len)
+			return (0);
+		// if (!check_line(line, len, env->map.h == 0 || env->map.h + 1 == line_count - 1))
+		if (!check_line(line, len, first_or_last_line))
 			return (0);
 		if (!env->map.ptr)
 		{
@@ -49,9 +74,16 @@ ft_puterr("the given map does not have a rectangular shape\n"), 0);
 			free(line);
 		}
 		else
+		{
 			env->map.ptr[env->map.h] = line;
+			env->map.mapcopy[env->map.h] = ft_strdup(line);
+		}
 		env->map.h++;
 		line = get_next_line(fd);
+		if (env->map.h + 1 == line_count)
+			first_or_last_line = true;
+		else
+			first_or_last_line = false;
 	}
 	return (env->map.h);
 }
@@ -59,19 +91,13 @@ ft_puterr("the given map does not have a rectangular shape\n"), 0);
 size_t	load_map(t_env *env, const char *path)
 {
 	int		fd;
-	size_t	n_line;
+	ssize_t	line_count;
 
-	fd = open(path, O_RDONLY);
-	if (fd < 0)
-	{
-		ft_puterr("could not open the file ");
-		ft_putstr_fd(Y_B_MAG, STDERR_FILENO);
-		ft_putstr_fd(path, STDERR_FILENO);
-		ft_putstr_fd(Y_RESET, STDERR_FILENO);
-		ft_putchar_fd('\n', STDERR_FILENO);
+	line_count = count_line(path);
+	if (line_count <= 0)
 		return (0);
-	}
-	n_line = read_map(env, fd);
+	fd = open(path, O_RDONLY);
+	line_count = read_map(env, fd, line_count);
 	close(fd);
-	return (n_line);
+	return (line_count);
 }

@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 18:56:06 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/31 03:14:35 by msloot           ###   ########.fr       */
+/*   Updated: 2024/04/04 18:13:02 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	free_env(t_env *env)
 {
 	if (env->map.ptr)
 		ft_free_2d((void ***)&(env->map.ptr), env->map.h);
+	if (env->map.mapcopy)
+		ft_free_2d((void ***)&(env->map.mapcopy), env->map.h);
 	if (env->mlx && env->win.ptr)
 		mlx_destroy_window(env->mlx, env->win.ptr);
 	if (env->mlx)
