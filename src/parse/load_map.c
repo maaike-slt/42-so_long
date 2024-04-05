@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 18:19:46 by msloot            #+#    #+#             */
-/*   Updated: 2024/04/04 21:10:26 by msloot           ###   ########.fr       */
+/*   Updated: 2024/04/05 17:35:54 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ static size_t	read_map(t_env *env, int fd, size_t	line_count)
 	while (line != NULL)
 	{
 		len = empty_line(line);
+		env->map.w = len;
 		if (!len)
 			return (0);
 		// if (!check_line(line, len, env->map.h == 0 || env->map.h + 1 == line_count - 1))

@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 17:30:43 by msloot            #+#    #+#             */
-/*   Updated: 2024/04/04 20:07:17 by msloot           ###   ########.fr       */
+/*   Updated: 2024/04/05 17:36:23 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ bool	parse(t_env *env, const char *path)
 		ft_puterr("not the right filetype, a .ber file is needed\n");
 		return (false);
 	}
-	n_line = load_map(env, path);
+	n_line = count_line(path);
 	if (!n_line)
 		return (false);
 	env->map.ptr = (t_cell **)malloc(sizeof(t_cell *) * (n_line + 1));
