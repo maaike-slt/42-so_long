@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 17:30:43 by msloot            #+#    #+#             */
-/*   Updated: 2024/04/05 17:36:23 by msloot           ###   ########.fr       */
+/*   Updated: 2024/04/05 19:00:14 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static bool	pos(t_env *env)
 bool	parse(t_env *env, const char *path)
 {
 	size_t	size;
-	size_t	n_line;
+	ssize_t	line_count;
 
 	size = ft_strlen(path);
 	if (size < 4 || ft_strcmp(&path[size - 4], ".ber") != 0)
@@ -81,13 +81,13 @@ bool	parse(t_env *env, const char *path)
 		ft_puterr("not the right filetype, a .ber file is needed\n");
 		return (false);
 	}
-	n_line = count_line(path);
-	if (!n_line)
+	line_count = count_line(path);
+	if (line_count <= 0)
 		return (false);
-	env->map.ptr = (t_cell **)malloc(sizeof(t_cell *) * (n_line + 1));
+	env->map.ptr = (t_cell **)malloc(sizeof(t_cell *) * (line_count + 1));
 	if (!env->map.ptr)
 		return (false);
-	env->map.mapcopy = (t_cell **)malloc(sizeof(t_cell *) * (n_line + 1));
+	env->map.mapcopy = (t_cell **)malloc(sizeof(t_cell *) * (line_count + 1));
 	if (!env->map.mapcopy)
 		return (false);
 	if (load_map(env, path) <= 0)

@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 18:19:46 by msloot            #+#    #+#             */
-/*   Updated: 2024/04/05 17:35:54 by msloot           ###   ########.fr       */
+/*   Updated: 2024/04/05 19:07:30 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,26 +59,21 @@ static size_t	read_map(t_env *env, int fd, size_t	line_count)
 	while (line != NULL)
 	{
 		len = empty_line(line);
-		env->map.w = len;
 		if (!len)
 			return (0);
 		// if (!check_line(line, len, env->map.h == 0 || env->map.h + 1 == line_count - 1))
 		if (!check_line(line, len, first_or_last_line))
 			return (0);
-		if (!env->map.ptr)
+		if (env->map.h == 0)
+			env->map.w = len;
+		else if (env->map.w != len)
 		{
-			if (env->map.h == 0)
-				env->map.w = len;
-			else if (env->map.w != len)
-				return (\
-ft_puterr("the given map does not have a rectangular shape\n"), 0);
 			free(line);
+			return (\
+ft_puterr("the given map does not have a rectangular shape\n"), 0);
 		}
-		else
-		{
-			env->map.ptr[env->map.h] = line;
-			env->map.mapcopy[env->map.h] = ft_strdup(line);
-		}
+		env->map.ptr[env->map.h] = line;
+		env->map.mapcopy[env->map.h] = ft_strdup(line);
 		env->map.h++;
 		line = get_next_line(fd);
 		if (env->map.h + 1 == line_count)
