@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 17:30:43 by msloot            #+#    #+#             */
-/*   Updated: 2024/04/05 19:00:14 by msloot           ###   ########.fr       */
+/*   Updated: 2024/04/09 20:05:23 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,8 @@ bool	parse(t_env *env, const char *path)
 
 	size = ft_strlen(path);
 	if (size < 4 || ft_strcmp(&path[size - 4], ".ber") != 0)
-	{
-		ft_puterr("not the right filetype, a .ber file is needed\n");
-		return (false);
-	}
+		return (ft_puterr
+			("not the right filetype, a .ber file is needed\n"), false);
 	line_count = count_line(path);
 	if (line_count <= 0)
 		return (false);
@@ -91,6 +89,8 @@ bool	parse(t_env *env, const char *path)
 	if (!env->map.mapcopy)
 		return (false);
 	if (load_map(env, path) <= 0)
+		return (false);
+	if (!check_map(env))
 		return (false);
 	return (pos(env));
 }

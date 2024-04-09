@@ -64,7 +64,7 @@ INC =		./inc/
 
 SRC_NAME =	main.c free.c \
 			load_sprite.c render.c create_window.c \
-			parse/parse.c parse/load_map.c \
+			parse_map/parse.c parse_map/read.c parse_map/check.c\
 			event/hook.c event/close_win.c event/move_pony.c \
 
 SRC = $(addprefix $(SRC_PATH), $(SRC_NAME))
