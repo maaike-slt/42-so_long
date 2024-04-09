@@ -6,11 +6,12 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 14:17:48 by msloot            #+#    #+#             */
-/*   Updated: 2024/04/05 17:34:54 by msloot           ###   ########.fr       */
+/*   Updated: 2024/04/09 20:16:28 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include <stdio.h>
 
 static bool	load_sprite_err(const char *path)
 {
@@ -21,8 +22,6 @@ static bool	load_sprite_err(const char *path)
 	ft_putchar_fd('\n', STDERR_FILENO);
 	return (false);
 }
-
-#include <stdio.h>
 
 static bool	load_sprite(t_env *env, t_img *img, char *xpm_path)
 {

@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:32:05 by msloot            #+#    #+#             */
-/*   Updated: 2024/04/05 18:50:28 by msloot           ###   ########.fr       */
+/*   Updated: 2024/04/09 20:15:30 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,7 @@ int	main(int argc, char *argv[])
 		return (free_spr(&env) && free_env(&env));
 	set_hook(&env);
 	render(&env);
-
 	mlx_loop(env.mlx);
-
 	free_spr(&env);
 	free_env(&env);
 	return (0);
