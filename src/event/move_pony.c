@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 13:26:25 by msloot            #+#    #+#             */
-/*   Updated: 2024/03/31 03:23:53 by msloot           ###   ########.fr       */
+/*   Updated: 2024/04/10 15:34:27 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,6 @@ bool	closing_key(int keycode, t_env *env)
 
 int	handle_keycode(int keycode, t_env *env)
 {
-	// (void)keycode;
-	(void)env;
 	if (movement(keycode, env))
 		return (0);
 	if (closing_key(keycode, env))

@@ -6,7 +6,7 @@
 #    By: msloot <msloot@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/14 19:19:04 by msloot            #+#    #+#              #
-#    Updated: 2024/04/04 21:04:48 by msloot           ###   ########.fr        #
+#    Updated: 2024/04/10 15:37:56 by msloot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,7 @@ OBJ_PATH =	./obj/
 INC =		./inc/
 
 SRC_NAME =	main.c free.c \
-			load_sprite.c render.c create_window.c \
+			load_sprite.c render.c create_window.c flood_fill.c \
 			parse_map/parse.c parse_map/read.c parse_map/check.c\
 			event/hook.c event/close_win.c event/move_pony.c \
 

@@ -6,13 +6,13 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 19:08:38 by msloot            #+#    #+#             */
-/*   Updated: 2024/04/10 15:25:04 by msloot           ###   ########.fr       */
+/*   Updated: 2024/04/10 16:40:55 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static bool	right_component_amt(
+static bool	single_component(
 	t_env *env, t_coord c, bool *seen_exit, bool *seen_pony)
 {
 	if (env->map.ptr[c.y][c.x] == EXIT)
@@ -36,7 +36,7 @@ static bool	right_component_amt(
 	return (true);
 }
 
-static bool	pos(t_env *env)
+static bool	component_count(t_env *env)
 {
 	t_coord	c;
 	bool	seen_exit;
@@ -52,7 +52,7 @@ static bool	pos(t_env *env)
 		c.x = 0;
 		while (c.x < env->map.w)
 		{
-			if (!right_component_amt(env, c, &seen_exit, &seen_pony))
+			if (!single_component(env, c, &seen_exit, &seen_pony))
 				return (false);
 			c.x++;
 		}
@@ -100,5 +100,7 @@ bool	check_map(t_env *env)
 			return (false);
 		i++;
 	}
-	return (pos(env));
+	if (!component_count(env))
+		return (false);
+	return (all_reachable(env));
 }
