@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 14:17:48 by msloot            #+#    #+#             */
-/*   Updated: 2024/04/09 20:16:28 by msloot           ###   ########.fr       */
+/*   Updated: 2024/04/12 20:15:28 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,26 +48,12 @@ bool	load_sprite_lib(t_env *env)
 	env->spr.pony_right.ptr = NULL;
 	env->spr.pony_view_right = true;
 	env->spr.treasure.ptr = NULL;
-	// put all sprites to NULL
-	if (!load_sprite(env, &(env->spr.wall), "./sprite/wall.xpm"))
-		return (false);
-	if (!load_sprite(env, &(env->spr.floor), "./sprite/floor.xpm"))
-		return (false);
-	// need to check that all sprite have same width and height as wall
-	// beside floor
-	if (!load_sprite(env, &(env->spr.exit_closed), "./sprite/exit_closed.xpm"))
-		return (false);
-	if (!load_sprite(env, &(env->spr.exit_open), "./sprite/exit_open.xpm"))
-		return (false);
-	if (env->spr.exit_closed.w != env->spr.wall.w || env->spr.exit_closed.h != env->spr.wall.h)
-		return (ft_puterr("the exit must have the same size as the wall"), false);
-	if (!load_sprite(env, &(env->spr.pony_left), "./sprite/pony_left.xpm"))
-		return (false);
-	if (!load_sprite(env, &(env->spr.pony_right), "./sprite/pony_right.xpm"))
-		return (false);
-	if (!load_sprite(env, &(env->spr.treasure), "./sprite/treasure.xpm"))
-		return (false);
-	if (env->spr.treasure.w != env->spr.wall.w || env->spr.treasure.h != env->spr.wall.h)
-		return (ft_puterr("the treasure must have the same size as the wall"), false);
-	return (true);
+	return (!load_sprite(env, &(env->spr.wall), "./sprite/wall.xpm")
+		&& !load_sprite(env, &(env->spr.floor), "./sprite/floor.xpm")
+		&& !load_sprite(
+			env, &(env->spr.exit_closed), "./sprite/exit_closed.xpm")
+		&& !load_sprite(env, &(env->spr.exit_open), "./sprite/exit_open.xpm")
+		&& !load_sprite(env, &(env->spr.pony_left), "./sprite/pony_left.xpm")
+		&& !load_sprite(env, &(env->spr.pony_right), "./sprite/pony_right.xpm")
+		&& !load_sprite(env, &(env->spr.treasure), "./sprite/treasure.xpm"));
 }
