@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 16:38:52 by msloot            #+#    #+#             */
-/*   Updated: 2024/04/13 14:55:39 by msloot           ###   ########.fr       */
+/*   Updated: 2024/04/13 16:02:51 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ static void	render_cell(t_env *env, size_t y, size_t x)
 	}
 	else if (env->map.ptr[y][x] == TREASURE)
 		put_sprite(env, env->spr.treasure.ptr, y, x);
+	else if (env->map.ptr[y][x] == FOE)
+		put_sprite(env, env->spr.foe.ptr, y, x);
 }
 
 void	render(t_env *env)
@@ -80,6 +82,6 @@ void	render(t_env *env)
 	ft_unbr_convert
 		(buffer, env->map.pos.move_count, ft_nbrlen(env->map.pos.move_count));
 	mlx_string_put(env->mlx, env->win.ptr,
-		env->map.w * env->spr.wall.w - env->spr.wall.w / 2,
-		env->spr.wall.h / 2, 0xff0000, buffer);
+		env->map.w * env->spr.wall.w - env->spr.wall.w / 2 - 3,
+		env->spr.wall.h / 2 + 5, 0xfff99b, buffer);
 }

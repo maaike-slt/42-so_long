@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 18:56:06 by msloot            #+#    #+#             */
-/*   Updated: 2024/04/05 17:59:05 by msloot           ###   ########.fr       */
+/*   Updated: 2024/04/13 16:02:51 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,7 @@ int	free_spr(t_env *env)
 		mlx_destroy_image(env->mlx, env->spr.pony_right.ptr);
 	if (env->spr.treasure.ptr)
 		mlx_destroy_image(env->mlx, env->spr.treasure.ptr);
+	if (env->spr.foe.ptr)
+		mlx_destroy_image(env->mlx, env->spr.foe.ptr);
 	return (1);
 }

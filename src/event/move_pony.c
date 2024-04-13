@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 13:26:25 by msloot            #+#    #+#             */
-/*   Updated: 2024/04/13 13:58:37 by msloot           ###   ########.fr       */
+/*   Updated: 2024/04/13 16:00:17 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	move_pony(t_env *env, ssize_t x, ssize_t y)
 			env->map.pos.taken_treasure < env->map.pos.treasure_num))
 		return ;
 	env->map.pos.move_count++;
+	if (env->map.ptr[new_y][new_x] == FOE)
+		close_win(env);
 	if (env->map.ptr[new_y][new_x] == EXIT)
 		close_win(env);
 	else if (env->map.ptr[new_y][new_x] == TREASURE)

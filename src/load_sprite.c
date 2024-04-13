@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 14:17:48 by msloot            #+#    #+#             */
-/*   Updated: 2024/04/13 14:28:53 by msloot           ###   ########.fr       */
+/*   Updated: 2024/04/13 15:58:26 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,13 @@ bool	load_sprite_lib(t_env *env)
 	env->spr.pony_right.ptr = NULL;
 	env->spr.pony_view_right = true;
 	env->spr.treasure.ptr = NULL;
+	env->spr.foe.ptr = NULL;
 	return (load_sprite(env, &(env->spr.wall), "./sprite/wall.xpm")
 		&& load_sprite(env, &(env->spr.floor), "./sprite/floor.xpm")
 		&& load_sprite(env, &(env->spr.exit_closed), "./sprite/exit_closed.xpm")
 		&& load_sprite(env, &(env->spr.exit_open), "./sprite/exit_open.xpm")
 		&& load_sprite(env, &(env->spr.pony_left), "./sprite/pony_left.xpm")
 		&& load_sprite(env, &(env->spr.pony_right), "./sprite/pony_right.xpm")
-		&& load_sprite(env, &(env->spr.treasure), "./sprite/treasure.xpm"));
+		&& load_sprite(env, &(env->spr.treasure), "./sprite/treasure.xpm")
+		&& load_sprite(env, &(env->spr.foe), "./sprite/changeling.xpm"));
 }

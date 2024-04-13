@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 19:08:38 by msloot            #+#    #+#             */
-/*   Updated: 2024/04/10 16:40:55 by msloot           ###   ########.fr       */
+/*   Updated: 2024/04/13 16:02:13 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static bool	check_line(const char *line, size_t len, bool first_or_last)
 		else if ((first_or_last == true || i == len - 1) && line[i] != WALL)
 			return (ft_puterr("map has to be surrounded by walls\n"), false);
 		else if ((line[i] != WALL && line[i] != EMPTY && line[i] != PONY)
-			&& line[i] != TREASURE && line[i] != EXIT)
+			&& line[i] != TREASURE && line[i] != EXIT && line[i] != FOE)
 			return (ft_puterr
 				("this map is composed with an unvalid character\n"),
 				false);

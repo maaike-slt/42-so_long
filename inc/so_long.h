@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:59:49 by msloot            #+#    #+#             */
-/*   Updated: 2024/04/13 13:49:35 by msloot           ###   ########.fr       */
+/*   Updated: 2024/04/13 15:54:39 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_sprite_lib
 	t_img	pony_left;
 	t_img	pony_right;
 	bool	pony_view_right;
+	t_img	foe;
 	t_img	treasure;
 }	t_sprite_lib;
 
@@ -93,6 +94,7 @@ enum	e_cell
 	EMPTY = '0',
 	WALL = '1',
 	PONY = 'P',
+	FOE = 'F',
 	EXIT = 'E',
 	TREASURE = 'C'
 };
