@@ -6,7 +6,7 @@
 #    By: msloot <msloot@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/14 19:19:04 by msloot            #+#    #+#              #
-#    Updated: 2024/04/13 19:44:34 by msloot           ###   ########.fr        #
+#    Updated: 2024/04/13 20:31:20 by msloot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ AR =	ar rcs
 RM = 	rm -rf
 
 CFLAGS =	-Wall -Werror -Wextra
-CFLAGS +=	-g
+# CFLAGS +=	-g
 # CFLAGS +=	-fsanitize=address
 
 UNAME = $(shell uname)
