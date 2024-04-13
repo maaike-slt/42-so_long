@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 15:37:45 by msloot            #+#    #+#             */
-/*   Updated: 2024/04/10 17:04:27 by msloot           ###   ########.fr       */
+/*   Updated: 2024/04/13 20:14:30 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	flood_fill(t_env *env, size_t move_y, size_t move_x)
 {
+	if (env->map.mapcopy[move_y][move_x] == EXIT)
+		env->map.mapcopy[move_y][move_x] = WALL;
 	if (env->map.mapcopy[move_y][move_x] == WALL)
 		return ;
 	env->map.mapcopy[move_y][move_x] = WALL;
