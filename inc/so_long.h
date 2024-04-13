@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:59:49 by msloot            #+#    #+#             */
-/*   Updated: 2024/04/13 15:54:39 by msloot           ###   ########.fr       */
+/*   Updated: 2024/04/13 17:11:46 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ enum	e_cell
 	WALL = '1',
 	PONY = 'P',
 	FOE = 'F',
+	MOVED_FOE = 'M',
 	EXIT = 'E',
 	TREASURE = 'C'
 };
@@ -131,6 +132,8 @@ int		free_env(t_env *env);
 int		free_spr(t_env *env);
 int		close_win(t_env *env);
 int		handle_keycode(int keycode, t_env *env);
+
+void	move_foe(t_env *env);
 
 bool	load_sprite_lib(t_env *env);
 bool	create_window(t_env *env);

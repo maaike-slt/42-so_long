@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 13:26:25 by msloot            #+#    #+#             */
-/*   Updated: 2024/04/13 16:00:17 by msloot           ###   ########.fr       */
+/*   Updated: 2024/04/13 17:10:42 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	move_pony(t_env *env, ssize_t x, ssize_t y)
 		env->spr.pony_view_right = true;
 	else if (x < 0)
 		env->spr.pony_view_right = false;
+	move_foe(env);
 	render(env);
 }
 
