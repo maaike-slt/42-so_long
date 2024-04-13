@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:32:05 by msloot            #+#    #+#             */
-/*   Updated: 2024/04/13 13:53:39 by msloot           ###   ########.fr       */
+/*   Updated: 2024/04/13 19:16:43 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	main(int argc, char *argv[])
 	if (!create_window(&env))
 		return (free_spr(&env) && free_env(&env));
 	set_hook(&env);
+	env.map.pos.move_treasure = 0;
 	render(&env);
 	mlx_loop(env.mlx);
 	free_spr(&env);

@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 13:26:25 by msloot            #+#    #+#             */
-/*   Updated: 2024/04/13 17:10:42 by msloot           ###   ########.fr       */
+/*   Updated: 2024/04/13 20:06:09 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,14 @@ void	move_pony(t_env *env, ssize_t x, ssize_t y)
 
 	new_y = env->map.pos.pony.y + y;
 	new_x = env->map.pos.pony.x + x;
-	if (env->map.ptr[new_y][new_x] == WALL ||
-			(env->map.ptr[new_y][new_x] == EXIT &&
-			env->map.pos.taken_treasure < env->map.pos.treasure_num))
+	if (env->map.ptr[new_y][new_x] == WALL || (env->map.ptr[new_y][new_x] == \
+		EXIT && env->map.pos.taken_treasure < env->map.pos.treasure_num))
 		return ;
 	env->map.pos.move_count++;
 	if (env->map.ptr[new_y][new_x] == FOE)
-		close_win(env);
+		final_message(env, "you fool!!\n", -1);
 	if (env->map.ptr[new_y][new_x] == EXIT)
-		close_win(env);
+		final_message(env, "well done:)\n", 1);
 	else if (env->map.ptr[new_y][new_x] == TREASURE)
 		env->map.pos.taken_treasure++;
 	env->map.ptr[env->map.pos.pony.y][env->map.pos.pony.x] = EMPTY;
@@ -59,7 +58,7 @@ bool	movement(int keycode, t_env *env)
 bool	closing_key(int keycode, t_env *env)
 {
 	if (keycode == K_Q || keycode == K_ESC)
-		return (close_win(env), true);
+		return (final_message(env, "seriously? you're", 0), true);
 	return (false);
 }
 
@@ -68,6 +67,8 @@ int	handle_keycode(int keycode, t_env *env)
 	if (movement(keycode, env))
 		return (0);
 	if (closing_key(keycode, env))
+		return (0);
+	else if (env->map.pos.move_count == 0 && keycode == K_ENTER)
 		return (0);
 	else
 	{

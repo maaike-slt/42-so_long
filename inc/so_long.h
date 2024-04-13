@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:59:49 by msloot            #+#    #+#             */
-/*   Updated: 2024/04/13 17:11:46 by msloot           ###   ########.fr       */
+/*   Updated: 2024/04/13 19:56:21 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,9 @@ typedef struct s_sprite_lib
 	t_img	pony_right;
 	bool	pony_view_right;
 	t_img	foe;
-	t_img	treasure;
+	t_img	treasure_down;
+	t_img	treasure_middle;
+	t_img	treasure_up;
 }	t_sprite_lib;
 
 typedef struct s_win
@@ -68,6 +70,7 @@ typedef struct s_pos
 	t_coord	exit;
 	size_t	treasure_num;
 	size_t	taken_treasure;
+	size_t	move_treasure;
 	size_t	move_count;
 }	t_pos;
 
@@ -113,6 +116,7 @@ enum	e_mask
 
 enum	e_keypress_linux
 {
+	K_ENTER = 65293,
 	K_ESC = 65307,
 	K_Z = 122,
 	K_Q = 113,
@@ -131,6 +135,7 @@ void	set_hook(t_env *env);
 int		free_env(t_env *env);
 int		free_spr(t_env *env);
 int		close_win(t_env *env);
+void	final_message(t_env *env, char *str, ssize_t won);
 int		handle_keycode(int keycode, t_env *env);
 
 void	move_foe(t_env *env);

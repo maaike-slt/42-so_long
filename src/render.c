@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 16:38:52 by msloot            #+#    #+#             */
-/*   Updated: 2024/04/13 16:02:51 by msloot           ###   ########.fr       */
+/*   Updated: 2024/04/13 19:16:45 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,17 @@ static void	put_sprite(t_env *env, void *ptr, size_t y, size_t x)
 		env->spr.wall.h * y);
 }
 
-static void	render_cell(t_env *env, size_t y, size_t x)
+static void	render_treasure(t_env *env, size_t y, size_t x, size_t i)
+{
+	if (i % 4 == 0)
+		put_sprite(env, env->spr.treasure_down.ptr, y, x);
+	else if (i % 4 == 1 || i % 4 == 3)
+		put_sprite(env, env->spr.treasure_middle.ptr, y, x);
+	else if (i % 4 == 2)
+		put_sprite(env, env->spr.treasure_up.ptr, y, x);
+}
+
+static void	render_cell(t_env *env, size_t y, size_t x, size_t i)
 {
 	if (env->map.ptr[y][x] == WALL)
 		put_sprite(env, env->spr.wall.ptr, y, x);
@@ -56,7 +66,7 @@ static void	render_cell(t_env *env, size_t y, size_t x)
 			put_sprite(env, env->spr.pony_left.ptr, y, x);
 	}
 	else if (env->map.ptr[y][x] == TREASURE)
-		put_sprite(env, env->spr.treasure.ptr, y, x);
+		render_treasure(env, y, x, i);
 	else if (env->map.ptr[y][x] == FOE)
 		put_sprite(env, env->spr.foe.ptr, y, x);
 }
@@ -74,7 +84,7 @@ void	render(t_env *env)
 		x = 0;
 		while (x < env->map.w)
 		{
-			render_cell(env, y, x);
+			render_cell(env, y, x, env->map.pos.move_treasure);
 			x++;
 		}
 		y++;
@@ -84,4 +94,5 @@ void	render(t_env *env)
 	mlx_string_put(env->mlx, env->win.ptr,
 		env->map.w * env->spr.wall.w - env->spr.wall.w / 2 - 3,
 		env->spr.wall.h / 2 + 5, 0xfff99b, buffer);
+	env->map.pos.move_treasure++;
 }
