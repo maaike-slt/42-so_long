@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 16:38:52 by msloot            #+#    #+#             */
-/*   Updated: 2024/04/12 20:11:21 by msloot           ###   ########.fr       */
+/*   Updated: 2024/04/13 14:55:39 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	render_floor(t_env *env)
 static void	put_sprite(t_env *env, void *ptr, size_t y, size_t x)
 {
 	mlx_put_image_to_window(env->mlx, env->win.ptr, ptr, env->spr.wall.w * x,
-		env->spr.wall.h);
+		env->spr.wall.h * y);
 }
 
 static void	render_cell(t_env *env, size_t y, size_t x)
@@ -63,6 +63,7 @@ void	render(t_env *env)
 {
 	size_t	y;
 	size_t	x;
+	char	buffer[16];
 
 	render_floor(env);
 	y = 0;
@@ -76,4 +77,9 @@ void	render(t_env *env)
 		}
 		y++;
 	}
+	ft_unbr_convert
+		(buffer, env->map.pos.move_count, ft_nbrlen(env->map.pos.move_count));
+	mlx_string_put(env->mlx, env->win.ptr,
+		env->map.w * env->spr.wall.w - env->spr.wall.w / 2,
+		env->spr.wall.h / 2, 0xff0000, buffer);
 }

@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:59:49 by msloot            #+#    #+#             */
-/*   Updated: 2024/04/10 16:40:10 by msloot           ###   ########.fr       */
+/*   Updated: 2024/04/13 13:49:35 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ typedef struct s_pos
 	t_coord	exit;
 	size_t	treasure_num;
 	size_t	taken_treasure;
+	size_t	move_count;
 }	t_pos;
 
 

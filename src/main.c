@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:32:05 by msloot            #+#    #+#             */
-/*   Updated: 2024/04/09 20:15:30 by msloot           ###   ########.fr       */
+/*   Updated: 2024/04/13 13:53:39 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static bool	init(t_env *env)
 	env->map.ptr = NULL;
 	env->map.mapcopy = NULL;
 	env->mlx = mlx_init();
+	env->map.pos.move_count = 0;
 	if (!env->mlx)
 		return (false);
 	return (true);

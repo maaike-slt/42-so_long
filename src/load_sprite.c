@@ -6,12 +6,11 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 14:17:48 by msloot            #+#    #+#             */
-/*   Updated: 2024/04/12 20:15:28 by msloot           ###   ########.fr       */
+/*   Updated: 2024/04/13 14:28:53 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <stdio.h>
 
 static bool	load_sprite_err(const char *path)
 {
@@ -34,7 +33,6 @@ static bool	load_sprite(t_env *env, t_img *img, char *xpm_path)
 			&(img->h));
 	if (!img->ptr)
 		return (load_sprite_err(xpm_path));
-	printf("%s\nw: %d\nh: %d\n\n", xpm_path, img->w, img->h);
 	return (true);
 }
 
@@ -48,12 +46,11 @@ bool	load_sprite_lib(t_env *env)
 	env->spr.pony_right.ptr = NULL;
 	env->spr.pony_view_right = true;
 	env->spr.treasure.ptr = NULL;
-	return (!load_sprite(env, &(env->spr.wall), "./sprite/wall.xpm")
-		&& !load_sprite(env, &(env->spr.floor), "./sprite/floor.xpm")
-		&& !load_sprite(
-			env, &(env->spr.exit_closed), "./sprite/exit_closed.xpm")
-		&& !load_sprite(env, &(env->spr.exit_open), "./sprite/exit_open.xpm")
-		&& !load_sprite(env, &(env->spr.pony_left), "./sprite/pony_left.xpm")
-		&& !load_sprite(env, &(env->spr.pony_right), "./sprite/pony_right.xpm")
-		&& !load_sprite(env, &(env->spr.treasure), "./sprite/treasure.xpm"));
+	return (load_sprite(env, &(env->spr.wall), "./sprite/wall.xpm")
+		&& load_sprite(env, &(env->spr.floor), "./sprite/floor.xpm")
+		&& load_sprite(env, &(env->spr.exit_closed), "./sprite/exit_closed.xpm")
+		&& load_sprite(env, &(env->spr.exit_open), "./sprite/exit_open.xpm")
+		&& load_sprite(env, &(env->spr.pony_left), "./sprite/pony_left.xpm")
+		&& load_sprite(env, &(env->spr.pony_right), "./sprite/pony_right.xpm")
+		&& load_sprite(env, &(env->spr.treasure), "./sprite/treasure.xpm"));
 }
