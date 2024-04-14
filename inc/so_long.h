@@ -6,7 +6,7 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:59:49 by msloot            #+#    #+#             */
-/*   Updated: 2024/04/13 19:56:21 by msloot           ###   ########.fr       */
+/*   Updated: 2024/04/14 12:03:29 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ typedef struct s_coord
 	size_t	y;
 }	t_coord;
 
-
 typedef struct s_pos
 {
 	t_coord	pony;
@@ -73,7 +72,6 @@ typedef struct s_pos
 	size_t	move_treasure;
 	size_t	move_count;
 }	t_pos;
-
 
 typedef struct s_map
 {
