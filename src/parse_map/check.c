@@ -6,20 +6,34 @@
 /*   By: msloot <msloot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 19:08:38 by msloot            #+#    #+#             */
-/*   Updated: 2024/04/13 16:02:13 by msloot           ###   ########.fr       */
+/*   Updated: 2024/04/19 16:59:14 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static bool	single_component(
-	t_env *env, t_coord c, bool *seen_exit, bool *seen_pony)
+static bool	missing_component(t_env *env, bool seen_exit, bool seen_pony)
+{
+	if (seen_pony == false)
+		return (ft_puterr
+			("missing pony, there has to be one in the map\n"), false);
+	if (seen_exit == false)
+		return (ft_puterr
+			("missing exit, there has to be one in the map\n"), false);
+	if (env->map.pos.treasure_num == 0)
+		return (ft_puterr
+			("too few treasures in this map, at least one needed\n"), false);
+	return (true);
+}
+
+static bool	single_component(t_env *env, t_coord c, bool *seen_exit,
+		bool *seen_pony)
 {
 	if (env->map.ptr[c.y][c.x] == EXIT)
 	{
 		if (*seen_exit == true)
-			return (ft_puterr
-				("too many exits in this map, only one allowed\n"), false);
+			return (ft_puterr("too many exits in this map, only one allowed\n"),
+				false);
 		env->map.pos.exit = c;
 		*seen_exit = true;
 	}
@@ -44,8 +58,8 @@ static bool	component_count(t_env *env)
 
 	seen_exit = false;
 	seen_pony = false;
-	env->map.pos.taken_treasure = 0;
 	env->map.pos.treasure_num = 0;
+	env->map.pos.taken_treasure = 0;
 	c.y = 0;
 	while (c.y < env->map.h)
 	{
@@ -58,10 +72,7 @@ static bool	component_count(t_env *env)
 		}
 		c.y++;
 	}
-	if (env->map.pos.treasure_num == 0)
-		return (ft_puterr
-			("too few treasures in this map, at least one needed\n"), false);
-	return (true);
+	return (missing_component(env, seen_exit, seen_pony));
 }
 
 static bool	check_line(const char *line, size_t len, bool first_or_last)
@@ -78,13 +89,12 @@ static bool	check_line(const char *line, size_t len, bool first_or_last)
 		else if ((line[i] != WALL && line[i] != EMPTY && line[i] != PONY)
 			&& line[i] != TREASURE && line[i] != EXIT && line[i] != FOE)
 			return (ft_puterr
-				("this map is composed with an unvalid character\n"),
-				false);
+				("this map is composed with an unvalid character\n"), false);
 		i++;
 	}
 	if (i != len)
-		return (ft_puterr
-			("the given map does not have a rectangular shape\n"), false);
+		return (ft_puterr("the given map does not have a rectangular shape\n"),
+			false);
 	return (true);
 }
 
@@ -95,8 +105,8 @@ bool	check_map(t_env *env)
 	i = 0;
 	while (i < env->map.h)
 	{
-		if (!check_line
-			(env->map.ptr[i], env->map.w, i == 0 || i == env->map.h - 1))
+		if (!check_line(env->map.ptr[i], env->map.w, i == 0 || i == env->map.h
+				- 1))
 			return (false);
 		i++;
 	}
